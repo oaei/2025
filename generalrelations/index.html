@@ -1,6 +1,6 @@
 <html>
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+  <meta charset="UTF-8">
   <title>Ontology Alignment Evaluation Initiative::GeneralRelation</title>
   <link rel="stylesheet" type="text/css" href="../style.css">
 </head>
@@ -19,38 +19,137 @@
 <h2>General description</h2>
 
 <p>
-  The GeneralRelation track aims to evaluate ontology matching systems on their ability to identify a wider range of semantic relations beyond equivalence. The benchmark includes subclass, superclass, overlap, and disjoint relations to reflect real-world ontology alignment scenarios.
+  The GeneralRelation track evaluates ontology matching systems on their ability to detect <b>general semantic relations</b> beyond simple equivalence. 
+  This better reflects real-world ontology alignment scenarios, where ontologies may differ in structure, granularity, and classification perspective.
 </p>
 
 <p>
-  This track addresses the growing demand for semantic integration where simple equivalence mappings are insufficient. It provides enriched datasets derived from product classification standards, STROMA/TaSeR test cases, and modified OAEI tracks, especially Anatomy.
+  Five mutually disjoint relation types are included:
+  <ul>
+    <li><b>Equivalence (&equiv;)</b> – Classes represent the exact same concept and share all instances.</li>
+    <li><b>Superclass_of (&geq;)</b> – Every instance of the target class is also an instance of the source class (generalization).</li>
+    <li><b>Subclass_of (&leq;)</b> – Every instance of the source class is also an instance of the target class (specialization).</li>
+    <li><b>Overlap (&asymp;)</b> – Classes share some but not all instances; their sets intersect without one being a subset of the other.</li>
+    <li><b>Disjoint (&osol;)</b> – Classes have no common instances; their sets are mutually exclusive.</li>
+  </ul>
+</p>
+
+
+<p>
+  This track addresses the need for alignment approaches capable of capturing nuanced relationships, 
+  enabling richer semantic integration for tasks such as knowledge graph merging, master data integration, and semantic search.
 </p>
 
 <h2><a name="datasets">Datasets</a></h2>
 
-<p>Participants can download the complete benchmark dataset via Zenodo:</p>
+<p>The benchmark dataset suite is publicly available via Zenodo:</p>
 <ul>
-  <li><a href="https://zenodo.org/records/15682752">https://zenodo.org/records/15682752</a></li>
-</ul>
-
-<p>Three major sources are used:</p>
-<ul>
-  <li><b>Product Classification Standards</b> (e.g., ETIM, eClass, UNSPSC, GPC)</li>
-  <li><b>STROMA/TaSeR</b> manually annotated test cases with various relation types</li>
-  <li><b>Modified OAEI Testcases</b> with injected subclass/superclass relations using enrichment strategies</li>
+  <li><a href="https://zenodo.org/records/16812745">Zenodo Record – GeneralRelation Benchmark</a></li>
 </ul>
 
 <p>
-  Evaluation follows the <a href="https://github.com/Michealxh-L/general_relation_datasets">isAmong framework</a> alignment framework, which measures semantic agreement between predicted and reference alignments at the leaf-class level, rewarding partially correct correspondences.
+The datasets come from three major sources:  
+<b>Product Classification Standards</b> (ETIM, eClass, UNSPSC, GPC),  
+<b>STROMA/TaSeR Test Cases</b>, and  
+<b>Modified OAEI Testcases</b>.  
+They vary in size, structure, and semantic complexity, and all reference alignments are annotated with explicit relation types.
 </p>
+
+<table border="1" cellpadding="5" cellspacing="0">
+  <thead>
+    <tr>
+      <th>Source</th>
+      <th>Dataset</th>
+      <th># Source Classes</th>
+      <th># Target Classes</th>
+      <th># Source Properties</th>
+      <th># Target Properties</th>
+      <th>≡</th>
+      <th>&geq;</th>
+      <th>&leq;</th>
+      <th>&asymp;</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- Product Classification Standards -->
+    <tr>
+      <td rowspan="2"><b>Product Classification Standards</b></td>
+      <td>GPC–UNSPSC</td>
+      <td>1,151</td><td>30,707</td>
+      <td>839</td><td>3</td>
+      <td>255</td><td>1,377</td><td>250</td><td>17,738</td>
+    </tr>
+    <tr>
+      <td>GPC–UNSPSC+</td>
+      <td>5,342</td><td>30,707</td>
+      <td>839</td><td>3</td>
+      <td>381</td><td>3,306</td><td>1293</td><td>23,600</td>
+    </tr>
+
+    <!-- STROMA/TaSeR -->
+    <tr>
+      <td rowspan="5"><b>STROMA/TaSeR Test Cases</b></td>
+      <td>g1–web</td>
+      <td>728</td><td>1,132</td>
+      <td>0</td><td>0</td>
+      <td>175</td><td>26</td><td>29</td><td>—</td>
+    </tr>
+    <tr>
+      <td>g2–diseases</td>
+      <td>1,109</td><td>5,146</td>
+      <td>0</td><td>0</td>
+      <td>316</td><td>11</td><td>27</td><td>—</td>
+    </tr>
+    <tr>
+      <td>g3–text</td>
+      <td>335</td><td>260</td>
+      <td>0</td><td>0</td>
+      <td>70</td><td>267</td><td>425</td><td>—</td>
+    </tr>
+    <tr>
+      <td>g5–groceries</td>
+      <td>60</td><td>335</td>
+      <td>0</td><td>0</td>
+      <td>29</td><td>113</td><td>14</td><td>—</td>
+    </tr>
+    <tr>
+      <td>g7–literature</td>
+      <td>41</td><td>155</td>
+      <td>0</td><td>0</td>
+      <td>12</td><td>52</td><td>18</td><td>—</td>
+    </tr>
+
+    <!-- Modified OAEI -->
+    <tr>
+      <td><b>Modified OAEI Testcases</b></td>
+      <td>Anatomy*</td>
+      <td>2,441</td><td>2,773</td>
+      <td>3</td><td>2</td>
+      <td>676</td><td>671</td><td>600</td><td>—</td>
+    </tr>
+  </tbody>
+</table>
+
+
+<h3>Data Features</h3>
+<ul>
+  <li>Large and heterogeneous class hierarchies with rich property structures.</li>
+  <li>Multi-source mappings combining exact matches and broader/narrower matches.</li>
+  <li>Support for n:m correspondences and partially correct alignments.</li>
+  <li>Reference alignments annotated with explicit relation types (≡, ≥, ≤, ≃, ⊘).</li>
+</ul>
+
+<!-- <p>
+  Evaluation uses the <a href="https://github.com/Michealxh-L/general_relation_datasets">isAmong framework</a>, 
+  which compares predicted and reference leaf-class mappings, rewarding partially correct correspondences proportionally to their semantic coverage.
+</p> -->
+
 
 <h2>Related Links</h2>
 <ul>
   <li><a href="http://oaei.ontologymatching.org/2025/">OAEI 2025 Main Page</a></li>
   <li><a href="https://zenodo.org/records/15682752">Zenodo Dataset Record</a></li>
-  <li><a href="https://github.com/Michealxh-L/general_relation_datasets">GitHub Repository</a></li>
 </ul>
-
 
 <h2>Contact</h2>
 <p>
