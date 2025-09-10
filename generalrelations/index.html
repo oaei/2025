@@ -44,88 +44,138 @@
 
 <p>The benchmark dataset suite is publicly available via Zenodo:</p>
 <ul>
-  <li><a href="https://zenodo.org/records/16812745">Zenodo Record – GeneralRelation Benchmark</a></li>
+  <li><a href="https://zenodo.org/records/17091043">Zenodo Record – GeneralRelation Benchmark</a></li>
 </ul>
+As part of the data is extracted from eClass, which is a non-public industrial product classification standard, usage of the eClass-derived data must comply with the terms of the <a href="https://eclass.eu/en/eclass-standard/licenses">eClass License.</a>
 
 <p>
 The datasets come from three major sources:  
-<b>Product Classification Standards</b> (ETIM, eClass, UNSPSC, GPC),  
-<b>STROMA/TaSeR Test Cases</b>, and  
-<b>Modified OAEI Testcases</b>.  
+<b>Product Classification Standards</b> (<a href="https://gpc-browser.gs1.org/">GPC</a>, <a href="https://www.undp.org/unspsc
+">UNSPSC</a>, <a href="https://www.etim-international.com/">ETIM</a>, and <a href="https://eclass.eu/en/">eClass</a>,),  
+<b>STROMA/TaSeR Test Cases</b> [1,2], and  
+<b>Edited OAEI Testcases</b>.  
 They vary in size, structure, and semantic complexity, and all reference alignments are annotated with explicit relation types.
 </p>
 
 <table border="1" cellpadding="5" cellspacing="0">
   <thead>
     <tr>
-      <th>Source</th>
+      <th>Data Source</th>
       <th>Dataset</th>
-      <th># Source Classes</th>
-      <th># Target Classes</th>
-      <th># Source Properties</th>
-      <th># Target Properties</th>
-      <th>≡</th>
+      <th># S:Class</th>
+      <th># T:Class</th>
+      <th># S:Property</th>
+      <th># T:Property</th>
+      <th>&equiv;</th>
       <th>&geq;</th>
       <th>&leq;</th>
-      <th>&asymp;</th>
+      <th>&simeq;</th>
     </tr>
   </thead>
   <tbody>
-    <!-- Product Classification Standards -->
+    <!-- PMDMs (5 datasets) -->
     <tr>
-      <td rowspan="2"><b>Product Classification Standards</b></td>
-      <td>GPC–UNSPSC</td>
+      <td rowspan="5"><b>Product Classification Standards </b></td>
+      <td>GPC&ndash;UNSPSC</td>
       <td>1,151</td><td>30,707</td>
       <td>839</td><td>3</td>
       <td>255</td><td>1,377</td><td>250</td><td>17,738</td>
     </tr>
     <tr>
-      <td>GPC–UNSPSC+</td>
+      <td>GPC&ndash;UNSPSC<sup>+</sup></td>
       <td>5,342</td><td>30,707</td>
       <td>839</td><td>3</td>
-      <td>381</td><td>3,306</td><td>1293</td><td>23,600</td>
+      <td>381</td><td>3,306</td><td>1,293</td><td>23,600</td>
+    </tr>
+    <tr>
+      <td>ETIM&ndash;eClass</td>
+      <td>2,877</td><td>5,565</td>
+      <td>10,746</td><td>8,932</td>
+      <td>2,371</td><td>380</td><td>636</td><td>291</td>
+    </tr>
+    <tr>
+      <td>eClass&ndash;UNSPSC</td>
+      <td>7,349</td><td>19,600</td>
+      <td>4,009</td><td>3</td>
+      <td>329</td><td>1,533</td><td>351</td><td>55,573</td>
+    </tr>
+    <tr>
+      <td>eClass&ndash;GPC</td>
+      <td>3,459</td><td>1,210</td>
+      <td>2,027</td><td>2,064</td>
+      <td>251</td><td>431</td><td>1,199</td><td>11,014</td>
     </tr>
 
-    <!-- STROMA/TaSeR -->
+    <!-- STROMA (5 datasets) -->
     <tr>
-      <td rowspan="5"><b>STROMA/TaSeR Test Cases</b></td>
-      <td>g1–web</td>
+      <td rowspan="5"><b>STROMA/TaSeR</b></td>
+      <td>g1&ndash;web</td>
       <td>728</td><td>1,132</td>
       <td>0</td><td>0</td>
-      <td>175</td><td>26</td><td>29</td><td>—</td>
+      <td>175</td><td>26</td><td>29</td><td>&mdash;</td>
     </tr>
     <tr>
-      <td>g2–diseases</td>
+      <td>g2&ndash;diseases</td>
       <td>1,109</td><td>5,146</td>
       <td>0</td><td>0</td>
-      <td>316</td><td>11</td><td>27</td><td>—</td>
+      <td>316</td><td>11</td><td>27</td><td>&mdash;</td>
     </tr>
     <tr>
-      <td>g3–text</td>
+      <td>g3&ndash;text</td>
       <td>335</td><td>260</td>
       <td>0</td><td>0</td>
-      <td>70</td><td>267</td><td>425</td><td>—</td>
+      <td>70</td><td>267</td><td>425</td><td>&mdash;</td>
     </tr>
     <tr>
-      <td>g5–groceries</td>
+      <td>g5&ndash;groceries</td>
       <td>60</td><td>335</td>
       <td>0</td><td>0</td>
-      <td>29</td><td>113</td><td>14</td><td>—</td>
+      <td>29</td><td>113</td><td>14</td><td>&mdash;</td>
     </tr>
     <tr>
-      <td>g7–literature</td>
+      <td>g7&ndash;literature</td>
       <td>41</td><td>155</td>
       <td>0</td><td>0</td>
-      <td>12</td><td>52</td><td>18</td><td>—</td>
+      <td>12</td><td>52</td><td>18</td><td>&mdash;</td>
     </tr>
 
-    <!-- Modified OAEI -->
+    <!-- OAEI* (6 datasets) -->
     <tr>
-      <td><b>Modified OAEI Testcases</b></td>
-      <td>Anatomy*</td>
+      <td rowspan="6"><b>Edited OAEI Testcases</b></td>
+      <td>anatomy*</td>
       <td>2,441</td><td>2,773</td>
       <td>3</td><td>2</td>
-      <td>676</td><td>671</td><td>600</td><td>—</td>
+      <td>676</td><td>671</td><td>600</td><td>&mdash;</td>
+    </tr>
+    <tr>
+      <td>TAXR&ndash;NCBI (Bacteria)*</td>
+      <td>251</td><td>264</td>
+      <td>0</td><td>0</td>
+      <td>52</td><td>61</td><td>62</td><td>&mdash;</td>
+    </tr>
+    <tr>
+      <td>TAXR&ndash;NCBI (Chromista)*</td>
+      <td>1,802</td><td>1,852</td>
+      <td>0</td><td>0</td>
+      <td>414</td><td>496</td><td>487</td><td>&mdash;</td>
+    </tr>
+    <tr>
+      <td>TAXR&ndash;NCBI (Fungi)*</td>
+      <td>9,175</td><td>9,592</td>
+      <td>0</td><td>0</td>
+      <td>3,043</td><td>3,571</td><td>3,565</td><td>&mdash;</td>
+    </tr>
+    <tr>
+      <td>TAXR&ndash;NCBI (Plantae)*</td>
+      <td>19,346</td><td>20,055</td>
+      <td>0</td><td>0</td>
+      <td>5,933</td><td>7,024</td><td>7,048</td><td>&mdash;</td>
+    </tr>
+    <tr>
+      <td>TAXR&ndash;NCBI (Protozoa)*</td>
+      <td>376</td><td>413</td>
+      <td>0</td><td>0</td>
+      <td>107</td><td>125</td><td>126</td><td>&mdash;</td>
     </tr>
   </tbody>
 </table>
@@ -148,7 +198,6 @@ They vary in size, structure, and semantic complexity, and all reference alignme
 <h2>Related Links</h2>
 <ul>
   <li><a href="http://oaei.ontologymatching.org/2025/">OAEI 2025 Main Page</a></li>
-  <li><a href="https://zenodo.org/records/15682752">Zenodo Dataset Record</a></li>
 </ul>
 
 <h2>Contact</h2>
@@ -158,6 +207,18 @@ They vary in size, structure, and semantic complexity, and all reference alignme
   <b>Sven Hertling</b> (sven.hertling@uni-mannheim.de),<br>
   <b>Michael R. Hansen</b> (mire@dtu.com)
 </p>
+
+
+<h2>Bibliography</h2>
+
+<p>[1] Arnold, P., Rahm, E.: Enriching ontology mappings with semantic relations. Data
+  & Knowledge Engineering 93, 1–18 (2014)</p>
+
+<p>[2] Hertling, S., Paulheim, H.: Transformer based semantic relation typing for knowl-
+  edge graph integration. In: European Semantic Web Conference. pp. 105–121.
+  Springer (2023)</p>
+
+
 
 <div class="address">
   <div class="footer">http://oaei.ontologymatching.org/2025/generalrelation/</div>
