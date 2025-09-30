@@ -1,0 +1,692 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Ontology Alignment Evaluation Initiative::Circular Economy (CE)</title>
+<link rel="stylesheet" type="text/css" href="./ce_files/style.css">
+<style type="text/css">
+#Kopfbereich { position:absolute; top:20px; left:30px; }
+#table { position:static; top:100px; left:30px; }
+body { background-color:#FFFFFF; }
+th,td { padding:1px; }
+td { font-family:Courier New,courier; text-align:center; border:solid 1px #808080 }
+table { border:solid 1px }
+</style>
+<script type="text/javascript">
+
+<!-- array containg all data -->
+var data = new Array(
+"AgentOM","81","0.486","0.6","0.865",
+"LogMap","82 (0.5)","0.516","0.641","0.931",
+"LogMapLt","88","0.433","0.552","0.834",
+"Matcha","85 (0.9)","0.158","0.267","0.917",
+);
+
+
+
+
+<!-- array in which the sorted data is located -->
+var sort_data = new Array(data.length);
+
+<!-- define the headings, headings[x][0] are the names of the upper headings and all others for subheadings -->
+<!-- below a certain upper heading -->
+var headings = new Array();
+  headings[0] = "Matcher";
+  headings[1] = "Size";
+  headings[2] = "Precision";
+  headings[3] = "F-Measure";
+  headings[4] = "Recall";
+
+<!-- determine the number of columns -->
+var columns = headings.length;
+var rows = data.length/columns;
+
+<!-- different heading formats according to the number of subheadings -->
+var headingColumnsFormatting = new Array(
+ "colspan=\"1\" valign=\"top\" style=\"text-align:center; border:solid 1px #808080\"",
+ "colspan=\"6\" valign=\"top\" style=\"text-align:center; border:solid 1px #808080\"",
+ "colspan=\"1\" valign=\"top\" style=\"text-align:center; border:solid 1px #808080\""
+
+);
+
+<!-- set the style of all other columns-->
+var columnsFormatting = new Array(
+ "width=\"75\" style=\"font-family:Courier New,courier; text-align:center; border:solid 1px #808080\"",
+ "width=\"75\" bgcolor=\"#00FFFF\" style=\"font-family:Courier New,courier; text-align:center; border:solid 1px #808080\""
+);
+
+<!-- for every column the sort type is set, e.g. alphabetical if the column should be sorted alphabetically -->
+var columnSortTypes = new Array(
+ "alphabetical","star","numerical","numerical","numerical", "numerical", "numerical", "alphabetical"
+);
+
+<!-- table format -->
+var tableFormatting = "border=\"1\" style=\"border:solid 1px #808080\" cellspacing=\"0\"";
+
+<!-- load the arrow pictures -->
+var ArrowUp = "<img src=\"./ce_files/arrowUp.jpg\" width=\"14\" height=\"13\" border=\"0\" alt=\"\">";
+var ArrowDown = "<img src=\"./ce_files/arrowDown.jpg\" width=\"14\" height=\"13\" border=\"0\" alt=\"\">";
+var ArrowUpSorted = "<img src=\"./ce_files/arrowUpSorted.jpg\" width=\"14\" height=\"13\" border=\"0\" alt=\"\">";
+var ArrowDownSorted = "<img src=\"./ce_files/arrowDownSorted.jpg\" width=\"14\" height=\"13\" border=\"0\" alt=\"\">";
+
+var sortedLine = "";
+
+<!-- function to sort a certain line in a certain direction. Number presents the lien number. -->
+function createSortedLine(number,direction) {
+ sortedLine = "<tr>";
+ for(var j = 0; j < columns; ++j) {
+  sortedLine += "<th " + columnsFormatting[0] + ">";
+
+  <!-- sort ascending and print the right arrow in red-->
+  if(direction == "ascending" && j == number) {
+   sortedLine += ArrowUpSorted + " ";
+   sortedLine += "<a href=\"javascript:sortColumns(" + j + ",'" + columnSortTypes[j] + "','descending')\">" + ArrowDown + "</a>";
+  }
+  <!-- sort descending and print the right arrow in red--->
+  else if(direction == "descending" && j == number) {
+   sortedLine += "<a href=\"javascript:sortColumns(" + j + ",'" + columnSortTypes[j] + "','ascending')\">" + ArrowUp + "</a>";
+   sortedLine += " " + ArrowDownSorted;
+  }
+  <!-- print all other columns -->
+  else {
+   sortedLine += "<a href=\"javascript:sortColumns(" + j + ",'" + columnSortTypes[j] + "','ascending')\">" + ArrowUp + "</a> ";
+   sortedLine += "<a href=\"javascript:sortColumns(" + j + ",'" + columnSortTypes[j] + "','descending')\">" + ArrowDown + "</a><\/td>";
+  }
+ sortedLine += "<\/th>";
+ }
+ sortedLine += "<tr>";
+}
+
+<!-- function to really sort the columns according to a certain line number, type and direction -->
+function sortColumns(number,type,direction) {
+ var columnsData = new Array();
+ var dataToCompare = new Array();
+ var index = new Array();
+ <!-- get the according data -->
+ for(var i = 0; i < rows; ++i)
+  columnsData[i] = dataToCompare[i] = data[i * columns + number];
+ if(type == "alphabetical") columnsData.sort();
+ if(type == "numerical") columnsData.sort(Numsort);
+ if(type == "numericalInverse") columnsData.sort(NumsortInverse);
+ if(type== "star") columnsData.sort(starSort);
+ if(direction == "descending") columnsData.reverse();
+ <!--- determine and set the according index -->
+ var alreadySet = false;
+ for(i = 0; i < rows; ++i)
+  for(var j = 0; j < rows; ++j)
+   if(columnsData[i] == dataToCompare[j]) {
+   <!-- check whether the current j is already set as index to avoid problems with same numbers -->
+	for(var k=0; k<index.length; k++) {
+	 if(index[k]==j) alreadySet=true;
+	 }
+     if(alreadySet==false) index[i] = j;
+	 else alreadySet=false;
+   }
+
+ <!-- create the sorted line and write it -->
+ for(i = 0; i < rows; ++i)
+  for(j = 0; j < columns; ++j)
+   sort_data[i * columns + j] = data[index[i] * columns + j];
+ createSortedLine(number,direction);
+ writeTable(sort_data);
+}
+
+<!-- write the whole table with specified columns -->
+function writeTable(Array) {
+ var content = "";
+ content += "<table " + tableFormatting + ">";
+ content += "<thead><tr>";
+ for(var j = 0; j < headings.length; ++j)
+  content += "<th " + headingColumnsFormatting[0] + "bgcolor=\"CCCCCC\">" + headings[j] + "<\/th>";
+  content += "<\/tr>";
+<!--  content += "<tr>"; -->
+  <!--for(var j = 0; j < headings.length; ++j) {-->
+
+<!--	for(var k = 1; k < headings[j].length; ++k)-->
+<!--		content += "<th " + headingColumnsFormatting[5] + ">" + headings[j][k] + "<\/th>"; -->
+
+<!--  } -->
+<!--  content += "<\/tr>";	-->
+ content += sortedLine;
+ content += "<\/thead>";
+ content += "<tfoot><\/tfoot>";
+ content += "<tbody>";
+ for(var i = 0; i < rows; ++i) {
+	  if(i%2 == 0) {
+          content += "<tr bgcolor=\"FFFFDD\">";
+      }
+	  else {
+          content += "<tr bgcolor=\"FFDDFF\">";
+      }
+
+  <!-- StringEquiv is the last row. 80=8*10 -->
+
+	  if(Array[i * columns] == data[72]) {
+          content += "<tr bgcolor=\"DCDCDC\">";
+      }
+
+  for(var j = 0; j < columns; ++j)
+   content += "<td " + columnsFormatting[0] + ">" + Array[i * columns + j] + "<\/td>";
+  content += "<\/tr>";
+ }
+ content += "<\/tbody>";
+ content += "<\/table>";
+ if(document.getElementById)
+  document.getElementById("table").innerHTML = content;
+ else if(document.all)
+  document.all.table.innerHTML = content;
+ else if(document.layers) {
+  document.table.document.open();
+  document.table.document.write(content);
+  document.table.document.close();
+ }
+}
+<!-- sorting for numerical values-->
+function Numsort(a,b){
+    if(a=="-") {
+        return -1;
+    }
+    if(b=="-") {
+        return 1;
+    }
+    return a-b;
+}
+
+function starSort(a,b){
+	if(a.indexOf("*")!=-1) {
+		a=a.replace("*","");
+	}
+	if(a.indexOf("*")!=-1) {
+		a=a.replace("*","");
+	}
+	if(b.indexOf("*")!=-1) {
+		b=b.replace("*","");
+	}
+	if(b.indexOf("*")!=-1) {
+		b=b.replace("*","");
+	}
+	var result = Numsort(a,b);
+	return result;
+}
+
+<!-- sorting for inverse numerical values-->
+function NumsortInverse(a,b){
+    if(a=="-") {
+        return -1;
+    }
+    if(b=="-") {
+        return 1;
+    }
+	if(a=='X') {
+		return -1;
+	}
+	if(b=='X') {
+		return 1;
+	}
+	if(a=='T') {
+		return -1;
+	}
+	if(b=='T') {
+		return 1;
+	}
+    return b-a;
+}
+</script>
+</head>
+<body onload="createSortedLine(-1,&#39;&#39;); writeTable(data);">
+
+<div class="header">
+<a style="color: grey; line-height: 5mm;" href="https://oaei.ontologymatching.org/2025/results/">Ontology
+  Alignment Evaluation Initiative - OAEI 2025 Campaign</a>
+  <a href="http://oaei.ontologymatching.org/">
+  <img width="200px" src="./ce_files/oaeismall.jpg" style="float:right; margin-left: 5pt; border-style:none;"></a>
+<!--
+  <a href="http://www.seals-project.eu/">
+<img  width="200px" src="../../../seals-logo.jpg" style="clear:right;float:right; margin-left: 5pt; border-style:none;"/></a>
+-->
+</div>
+
+<h1>Results for OAEI 2025 - Circular Economy (CE) track</h1>
+
+<h2>Generated alignments</h2>
+
+<p>
+    We have collected all generated alignments and made them available in a zip-file via the following link.
+    These alignments are the raw results that the following report is based on.
+</p>
+
+<p><a href="https://oaei.ontologymatching.org/2025/results/ce/eval_files/oaei-ce-results-2025.zip">&gt;&gt;&gt; download raw results</a></p>
+
+
+<h2>Experimental setting</h2>
+
+<p>
+We conducted experiments by executing each system in its standard setting and we compare precision, F-measure, and recall. The only exception was AgentOM which provided its own alignments (using commercial LLM).
+</p>
+
+<p>
+We used the MELT platform to execute our evaluations for the executed systems. Currently, the reported evaluation results are directly taken from the MELT platform.
+</p>
+
+<h2>Results</h2>
+<p>
+    This year, we had four participants: AgentOM, LogMap, LogMapLt, and Matcha. With regard to F1-Measure, LogMap achieved the highest score.
+</p>
+
+<center>
+  <noscript>
+    <p>Java-Script need to be enabled!</p>
+  </noscript>
+
+  <div id="table">
+    <table border="1" style="border:solid 1px #808080" cellspacing="0">
+      <thead>
+        <tr>
+          <th colspan="1" valign="top" style="text-align:center; border:solid 1px #808080" bgcolor="CCCCCC">Matcher</th>
+          <th colspan="1" valign="top" style="text-align:center; border:solid 1px #808080" bgcolor="CCCCCC">Size</th>
+          <th colspan="1" valign="top" style="text-align:center; border:solid 1px #808080" bgcolor="CCCCCC">Precision</th>
+          <th colspan="1" valign="top" style="text-align:center; border:solid 1px #808080" bgcolor="CCCCCC">F-Measure</th>
+          <th colspan="1" valign="top" style="text-align:center; border:solid 1px #808080" bgcolor="CCCCCC">Recall</th>
+        </tr>
+        <tr>
+          <th width="75" style="font-family:Courier New,courier; text-align:center; border:solid 1px #808080">
+            <a href="javascript:sortColumns(0,'alphabetical','ascending')">
+              <img src="./ce_files/arrowUp.jpg" width="14" height="13" border="0" alt="">
+            </a>
+            <a href="javascript:sortColumns(0,'alphabetical','descending')">
+              <img src="./ce_files/arrowDown.jpg" width="14" height="13" border="0" alt="">
+            </a>
+          </th>
+          <th width="75" style="font-family:Courier New,courier; text-align:center; border:solid 1px #808080">
+            <a href="javascript:sortColumns(1,'star','ascending')">
+              <img src="./ce_files/arrowUp.jpg" width="14" height="13" border="0" alt="">
+            </a>
+            <a href="javascript:sortColumns(1,'star','descending')">
+              <img src="./ce_files/arrowDown.jpg" width="14" height="13" border="0" alt="">
+            </a>
+          </th>
+          <th width="75" style="font-family:Courier New,courier; text-align:center; border:solid 1px #808080">
+            <a href="javascript:sortColumns(2,'numerical','ascending')">
+              <img src="./ce_files/arrowUp.jpg" width="14" height="13" border="0" alt="">
+            </a>
+            <a href="javascript:sortColumns(2,'numerical','descending')">
+              <img src="./ce_files/arrowDown.jpg" width="14" height="13" border="0" alt="">
+            </a>
+          </th>
+          <th width="75" style="font-family:Courier New,courier; text-align:center; border:solid 1px #808080">
+            <a href="javascript:sortColumns(3,'numerical','ascending')">
+              <img src="./ce_files/arrowUp.jpg" width="14" height="13" border="0" alt="">
+            </a>
+            <a href="javascript:sortColumns(3,'numerical','descending')">
+              <img src="./ce_files/arrowDown.jpg" width="14" height="13" border="0" alt="">
+            </a>
+          </th>
+          <th width="75" style="font-family:Courier New,courier; text-align:center; border:solid 1px #808080">
+            <a href="javascript:sortColumns(4,'numerical','ascending')">
+              <img src="./ce_files/arrowUp.jpg" width="14" height="13" border="0" alt="">
+            </a>
+            <a href="javascript:sortColumns(4,'numerical','descending')">
+              <img src="./ce_files/arrowDown.jpg" width="14" height="13" border="0" alt="">
+            </a>
+          </th>
+        </tr>
+      </thead>
+
+      <tfoot></tfoot>
+
+      <!--<tbody>
+        <tr bgcolor="FFFFDD">
+          <td width="75" style="font-family:Courier New,courier; text-align:center; border:solid 1px #808080">AgentOM</td>
+          <td width="75" style="font-family:Courier New,courier; text-align:center; border:solid 1px #808080">?</td>
+          <td width="75" style="font-family:Courier New,courier; text-align:center; border:solid 1px #808080">0.486</td>
+          <td width="75" style="font-family:Courier New,courier; text-align:center; border:solid 1px #808080">0.6</td>
+          <td width="75" style="font-family:Courier New,courier; text-align:center; border:solid 1px #808080">0.865</td>
+        </tr>
+        <tr bgcolor="FFDDFF">
+          <td width="75" style="font-family:Courier New,courier; text-align:center; border:solid 1px #808080">LogMap (0.?)</td>
+          <td width="75" style="font-family:Courier New,courier; text-align:center; border:solid 1px #808080">?</td>
+          <td width="75" style="font-family:Courier New,courier; text-align:center; border:solid 1px #808080">0.516</td>
+          <td width="75" style="font-family:Courier New,courier; text-align:center; border:solid 1px #808080">0.641</td>
+          <td width="75" style="font-family:Courier New,courier; text-align:center; border:solid 1px #808080">0.931</td>
+        </tr>
+        <tr bgcolor="FFFFDD">
+          <td width="75" style="font-family:Courier New,courier; text-align:center; border:solid 1px #808080">LogMapLt</td>
+          <td width="75" style="font-family:Courier New,courier; text-align:center; border:solid 1px #808080">?</td>
+          <td width="75" style="font-family:Courier New,courier; text-align:center; border:solid 1px #808080">0.433</td>
+          <td width="75" style="font-family:Courier New,courier; text-align:center; border:solid 1px #808080">0.552</td>
+          <td width="75" style="font-family:Courier New,courier; text-align:center; border:solid 1px #808080">0.834</td>
+        </tr>
+        <tr bgcolor="FFFFDD">
+          <td width="75" style="font-family:Courier New,courier; text-align:center; border:solid 1px #808080">Matcha (0.?)</td>
+          <td width="75" style="font-family:Courier New,courier; text-align:center; border:solid 1px #808080">?</td>
+          <td width="75" style="font-family:Courier New,courier; text-align:center; border:solid 1px #808080">0.158</td>
+          <td width="75" style="font-family:Courier New,courier; text-align:center; border:solid 1px #808080">0.267</td>
+          <td width="75" style="font-family:Courier New,courier; text-align:center; border:solid 1px #808080">0.917</td>
+        </tr>
+      </tbody>-->
+    </table>
+  </div>
+</center>
+    <p>
+        The table also shows the results for precision, F-measure, recall and the size of the alignments for the optimal threshold.
+        <!--Regarding the recall, Matcha achieved the best score. LogMap and Matcha provide the correspondences with real-valued confidence. Therefore, we applied thresholding during evaluation.-->
+    </p>
+
+
+<!--<h2>Conclusions</h2>
+<p>
+</p>-->
+
+
+<h3>Thresholding Evaluation</h3>
+<p>
+    LogMap and MATCHA use weights to score each pair in their generated alignments (so does AgentOM, however, all its mappings had confidence 1). To see if we can find an optimal threshhold for each system (below which the generated mappings would not be taken into consideration), we inspected the results.
+</p>
+
+<p>
+    The weights in LogMap's alignment range from 1.12 (?) to 0.5. There were multiple matches with the lowest weight (0.5). These mappings were a mix of correct mappings (majority) and false positives. The computed threshold for obtaining the highest F-measure is 0.5 (including) which corresponds to the mappings analysis. Therefore, LogMap achieves the highest F-measure while taking all the mappings into consideration, without threshold adjustments.
+</p>
+<p>
+    In case of MATCHA, the weights of its results range between 1 and 0.6. Surprisingly, all mappings with the highest weights were false positives. The correct mapping with the lowest weight was weighted to 0.9306. This is also the computed threshold for obtaining the highest F-measure which is 0.61. Threshold 0.9306 (including) is very specific. Using a more general threshold 0.9 (including), the F-measure is just a slightly lower 0.6. Applying the thresholds, the number of correct mappings stays the same while the number of false positives lowers from 222 to 44 for threshold 0.9306 or 46 for threshold 0.9.
+</p>
+
+
+<h3>False Positives</h3>
+<p>
+    Additionally, we analysed the false positives - alignments discovered by the tools which were evaluated as incorrect. The list of the false positives can be viewed <a href="https://oaei.ontologymatching.org/2025/results/ce/eval_files/FPs.htm">here</a> in the following structure: entity 1 (E1), entity 2 (E2), individual tools - if the alignment was discovered by the tool, it is marked with an "x", and the reason why the alignment was discovered (Why Found).
+</p>
+<p>
+    We looked at the reasons why an alignment was discovered from a general point of view, and defined 4 reasons why they could have been chosen:
+</p>
+<ul>
+    <li>same name - concepts have identical names,</li>
+    <li>contains same word - names of the concepts include the same word or the word in another form,</li>
+    <li>similar string - names of the concepts include similar strings (e.g., trip, tip),</li>
+    <li>synonym - names of the concepts are or include synonyms,</li>
+    <li>? - no obvious reason could be seen.</li>
+</ul>
+<p>
+    Looking at the results, it can be said that when the reason an alignment was discovered was the same name, all or at least most tools generated the mapping. LogMap and MATCHA further generated mappings based on similar strings. AgentOM and MATCHA generated mappings based on synonyms. All four systems generated mappings where the same word was present in the entities names. Below are some comments for individual tools and the reasons why they discovered the false positives:
+</p>
+<ul>
+    <li>AgentOM (43 FPs) - same name (39x), synonym (2x), contains same word (2x),</li>
+    <li>LogMap (44 FPs) - same name (33x), contains same word (9x), similar string (2x),</li>
+    <li>LogMapLt (48 FPs) - same name (37x), contains same word (11x),</li>
+    <li>MATCHA (222 FPs) - same name (170x), synonym (6x), contains same word (37x), similar string (9x) - many mappings not found by other tools.</li>
+</ul>
+
+
+
+<h3>Contact</h3>
+
+
+  <p>This track is organized by 
+	<a>Jana Vataščinová</a>,
+	<a href="https://nb.vse.cz/~svabo/">Ondřej Zamazal</a>,
+	<a href="http://huanyuli.se/">Huanyu Li</a>,
+	<a href="https://liu.se/medarbetare/evabl45">Eva Blomqvist</a>, and
+	<a href="http://www.ida.liu.se/~patla00/">Patrick Lambrix</a>. 
+	If you have any problems working with the ontologies, any questions related to tool wrapping, or any suggestions related to the ce track, feel free to write an email oaei-ce [at] groups [dot] liu [dot] se.</p>
+	
+
+<div class="address">
+<div class="footer">http://oaei.ontologymatching.org/2025/results/ce/</div>
+</div>
+
+
+
+</body><div id="aiFabShadowRoot" style="opacity: 1; transition: opacity 0.4s ease-out 0s, transform 0.4s ease-out 0s;"><template shadowrootmode="open"><!-- sidePanelButton.html -->
+
+<style>
+    .acrobat-button-container {
+        position: fixed;
+        right: 0;
+        bottom: 36px;
+        z-index: 2147483646;
+        visibility: visible !important;
+        pointer-events: all;
+        opacity: 1;
+        display: flex;
+        align-items: center;
+        transition: opacity 0.3s ease-in-out;
+    }
+
+    @media print {
+        .acrobat-button-container {
+            display: none !important;
+        }
+    }
+
+    .acrobat-button {
+        position: relative;
+        background: white;
+        display: flex;
+        align-items: center;
+        pointer-events: all;
+        touch-action: none;
+        box-shadow: 0px 2px 8px 0px #00000029;
+        height: 34px;
+        width: 34px;
+        border: 1px solid transparent;
+        background-clip: padding-box, border-box;
+        background-origin: border-box;
+        background-image: linear-gradient(white, white),
+                        linear-gradient(95.85deg, #D73220 0%, #D92361 33%, #7155FA 100%);
+        border-radius: 18px;
+        justify-content: right;
+        margin-right: var(--fab-margin-right, 28px);
+        overflow: hidden;
+    }
+
+    .acrobat-button-container-transparent {
+        opacity: 0.4 !important;
+        transition: opacity 0.3s ease-in-out;
+    }
+
+    .acrobat-button-container-transparent:hover,
+    .acrobat-button-container-transparent:focus,
+    .acrobat-button-container-transparent:active {
+        opacity: 1;
+    }
+
+    .acrobat-button > svg {
+        flex-shrink: 0;
+        margin: 4px 5px 5px 5px;
+        width: 22px;
+        height: 22px;
+        pointer-events: none;
+        fill: #b40000;
+    }
+    .acrobat-button:has(.close-btn.open),
+    .expand-acrobat-button {
+        width: 64px;
+    }
+
+    .disabled {
+        background: #B1B1B1;
+    }
+
+    .tooltip-text {
+        width: 160px;
+        visibility: hidden;
+        opacity: 0;
+        background-color: #FFFFFF;
+        color: #292929;
+        border-radius: 7px;
+        padding: 4px 1px 5px 9px;
+        position: absolute;
+        z-index: 1;
+        right: 100%;
+        top: 50%;
+        transform: translateY(-50%);
+        margin-right: 10px;
+        transition: opacity 0.3s, visibility 0s linear 2s;
+        font-size: 12px;
+        line-height: 15px;
+        font-family: 'adobe-clean', Adobe Clean, sans-serif;
+        filter: drop-shadow(0px 1px 6px rgba(0, 0, 0, 0.12));
+    }
+
+    .tooltip-text::after {
+       content: '';
+       position: absolute;
+       top: 50%;
+       left: 100%;
+       transform: translateY(-50%);
+       border-width: 6px;
+       border-style: solid;
+       border-color: transparent transparent transparent #fff;
+    }
+
+    .show-tooltip {
+        visibility: visible;
+        opacity: 1;
+        line-height: 1.5;
+        font-family: 'adobe-clean', Adobe Clean, sans-serif;
+        transition: opacity 0.3s;
+        transition-delay: 500ms;
+    }
+
+    .close-btn {
+        position: relative;
+        display: none;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .close-btn svg {
+        fill: #464646;
+    }
+
+    .close-btn.showCloseButton {
+        opacity: 1;
+        display: flex;
+        justify-content: center;
+        width: 24px;
+        height: 24px;
+        padding: 2px;
+    }
+
+    .fab-view-settings-dialog {
+        display: none;
+        position: absolute;
+        bottom: 40px;
+        z-index: 1;
+    }
+
+    .close-btn:hover {
+        background: #E6E6E6;
+        border-radius: 50%;
+        cursor: pointer;
+    }
+
+    .fab-view-settings-dialog.showDialog {
+        display: block;
+    }
+    .close-btn .burger-icon {
+        display: inline;
+        margin-bottom: 2px;
+    }
+    .close-btn .close-icon {
+        display: none;
+    }
+    .close-btn.open .burger-icon {
+        display: none;
+    }
+    .close-btn.open .close-icon {
+        display: inline;
+    }
+    .tooltip-text .tooltip-text-content {
+        font-weight: bold;
+    }
+    .tooltip-text .tooltip-sub-text-text {
+        font-style: italic;
+        font-size: 11px;
+    }
+
+    /* Iframe wrapper for the icon */
+    .icon-iframe {
+        border: none;
+        width: 33px;
+        height: 34px;
+        background: transparent;
+        pointer-events: all;
+        flex-shrink: 0;
+    }
+    .draggable-handle {
+        display: none;
+        position: absolute;
+        right: var(--drag-handle-right, 12px);
+        cursor: grab;
+    }
+    .draggable-handle-visible {
+        display: flex;
+    }
+</style>
+
+<div class="acrobat-button-container" style="--fab-margin-right: 28px; --drag-handle-right: 12px;">
+    <div class="acrobat-button" role="button">
+        <div class="close-btn" role="button" aria-label="Show Acrobat AI FAB View Settings">
+            <svg class="close-icon" width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <mask id="mask0_8552_7892" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="14" height="14">
+                    <path d="M7.82482 7.00034L10.6374 4.18778C10.7893 4.03592 10.7893 3.78969 10.6374 3.63783L10.3625 3.36292C10.2106 3.21106 9.96446 3.21106 9.81255 3.36292L6.99995 6.17548L4.18734 3.36292C4.03543 3.21106 3.78933 3.21106 3.63743 3.36292L3.36247 3.63783C3.21056 3.78969 3.21056 4.03592 3.36247 4.18778L6.17507 7.00034L3.36247 9.81295C3.21056 9.96481 3.21056 10.2111 3.36247 10.3629L3.63743 10.6378C3.78933 10.7897 4.03543 10.7897 4.18734 10.6378L6.99995 7.82526L9.81255 10.6378C9.96446 10.7897 10.2106 10.7897 10.3625 10.6378L10.6374 10.3629C10.7893 10.2111 10.7893 9.96481 10.6374 9.81295L7.82482 7.00034Z" fill="#222222"></path>
+                </mask>
+                <g mask="url(#mask0_8552_7892)">
+                    <rect width="14" height="14"></rect>
+                </g>
+            </svg>
+            <svg class="burger-icon" width="21" height="17" viewBox="0 0 21 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <mask id="mask0_12188_28876" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="3" y="3" width="15" height="14">
+                <path d="M15.1285 12.8008H6.37852C6.08867 12.8008 5.85352 13.0359 5.85352 13.3258C5.85352 13.6156 6.08867 13.8508 6.37852 13.8508H15.1285C15.4184 13.8508 15.6535 13.6156 15.6535 13.3258C15.6535 13.0359 15.4184 12.8008 15.1285 12.8008Z" fill="#292929"></path>
+                <path d="M6.37852 6.85078H15.1285C15.4184 6.85078 15.6535 6.61562 15.6535 6.32578C15.6535 6.03594 15.4184 5.80078 15.1285 5.80078H6.37852C6.08867 5.80078 5.85352 6.03594 5.85352 6.32578C5.85352 6.61562 6.08867 6.85078 6.37852 6.85078Z" fill="#292929"></path>
+                <path d="M15.1285 9.30078H6.37852C6.08867 9.30078 5.85352 9.53594 5.85352 9.82578C5.85352 10.1156 6.08867 10.3508 6.37852 10.3508H15.1285C15.4184 10.3508 15.6535 10.1156 15.6535 9.82578C15.6535 9.53594 15.4184 9.30078 15.1285 9.30078Z" fill="#292929"></path>
+                </mask>
+                <g mask="url(#mask0_12188_28876)">
+                <rect x="3.75391" y="3" width="14" height="14" fill="#464646"></rect>
+                </g>
+            </svg>
+        </div>
+        <iframe id="icon-iframe" class="icon-iframe" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;style&gt;
+        html {
+            height: 100%;
+            width: 100%;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            background: transparent;
+            overflow: hidden;
+            height: 100%;
+            width: 100%;
+            cursor: pointer;
+            pointer-events: all;
+        }
+        svg {
+            padding: 5px 5px 5px 6px;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;svg id=&quot;ImportedIcons&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;22&quot; height=&quot;22&quot; viewBox=&quot;0 0 22 22&quot;&gt;
+        &lt;path d=&quot;m6.21661,16.39534c-1.35034,2.23499-2.67933,3.64758-3.45616,3.64758-.12795.00539-.25276-.04056-.34667-.12762-.14818-.12483-.21629-.32065-.17758-.5105.14764-.80079,1.68628-1.95576,3.98041-3.00946Zm6.49075-3.19656c-.57993.12528-1.1792.27056-1.78689.43544-.4366.11893-.87951.24862-1.32255.38729.23541-.4949.4515-.98554.6398-1.452.24831-.6159.48156-1.232.69564-1.83456.18831.30354.38304.59839.58195.88207.39375.56092.81787,1.09736,1.19205,1.58176Zm-2.99822-10.63684c.08814-.18001.26644-.29855.46653-.31016.51149,0,.62276.63358.62276,1.1638-.06787,1.25011-.29293,2.48669-.66988,3.68055-.85816-2.33642-.73831-3.97319-.41942-4.53419h.00001Zm9.60883,12.20974c-.13359.4402-.56725.71808-1.023.6555-.15594-.00061-.3112-.02054-.46224-.05933-1.07834-.28263-2.07953-.80363-2.92976-1.5246.71719-.11267,1.44198-.17001,2.16797-.17149.48402-.00813.96771.03017,1.44442.11438.43447.09244.92449.33873.80261.98554Zm1.45515-1.0537c-1.01837-.83309-2.33117-1.21735-3.63802-1.06487-.98482.00983-1.96732.09739-2.93836.26187-.62354-.62512-1.19003-1.30467-1.69272-2.03054-.38314-.54455-.73672-1.10931-1.05923-1.69182.54287-1.57384.85986-3.2167.94151-4.87953,0-1.49369-.57564-3.09087-2.19132-3.09087-.56296.01952-1.07528.33036-1.35261.82066-.68906,1.2165-.41298,3.72002.68705,6.26756-.38306,1.17041-.80046,2.31007-1.31196,3.57265-.43687,1.08123-.93191,2.13803-1.48293,3.16579-1.64775.68213-5.15115,2.33642-5.48494,4.16456-.10306.53569.0783,1.08658.47942,1.45629.39145.35044.90217.53779,1.42737.5236,2.10998,0,4.21366-3.003,5.63044-5.58789.80461-.2816,1.62641-.53671,2.44391-.759.8967-.24407,1.76345-.44427,2.58082-.594,1.39014,1.39224,3.25004,2.21523,5.21531,2.30773,1.36751,0,1.87887-.60942,2.06516-1.122.20733-.5893.08589-1.24438-.3189-1.72019Z&quot; fill=&quot;var(--iconRed, #d31510)&quot; fill-rule=&quot;evenodd&quot;/&gt;
+    &lt;/svg&gt;
+&lt;/body&gt;
+&lt;/html&gt; "></iframe>
+    </div>
+    <div class="fab-view-settings-dialog"></div>
+    <div class="tooltip-text">
+        <span id="tooltipTextEnabled" class="translate tooltip-text-content">Get summaries and key insights using AI Assistant</span>
+        <span id="tooltipTextSubText" class="translate tooltip-sub-text-text">powered by Adobe Acrobat</span>
+    </div>
+    <div class="draggable-handle">
+        <svg width="14" height="15" viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4.60039 13.0699C5.26313 13.0699 5.80039 12.5327 5.80039 11.8699C5.80039 11.2072 5.26313 10.6699 4.60039 10.6699C3.93765 10.6699 3.40039 11.2072 3.40039 11.8699C3.40039 12.5327 3.93765 13.0699 4.60039 13.0699Z" fill="#292929"></path>
+            <path d="M4.60039 8.27109C5.26313 8.27109 5.80039 7.73384 5.80039 7.07109C5.80039 6.40835 5.26313 5.87109 4.60039 5.87109C3.93765 5.87109 3.40039 6.40835 3.40039 7.07109C3.40039 7.73384 3.93765 8.27109 4.60039 8.27109Z" fill="#292929"></path>
+            <path d="M4.60039 3.47031C5.26313 3.47031 5.80039 2.93305 5.80039 2.27031C5.80039 1.60757 5.26313 1.07031 4.60039 1.07031C3.93765 1.07031 3.40039 1.60757 3.40039 2.27031C3.40039 2.93305 3.93765 3.47031 4.60039 3.47031Z" fill="#292929"></path>
+            <path d="M9.4002 13.0699C10.0629 13.0699 10.6002 12.5327 10.6002 11.8699C10.6002 11.2072 10.0629 10.6699 9.4002 10.6699C8.73745 10.6699 8.2002 11.2072 8.2002 11.8699C8.2002 12.5327 8.73745 13.0699 9.4002 13.0699Z" fill="#292929"></path>
+            <path d="M9.4002 8.27109C10.0629 8.27109 10.6002 7.73384 10.6002 7.07109C10.6002 6.40835 10.0629 5.87109 9.4002 5.87109C8.73745 5.87109 8.2002 6.40835 8.2002 7.07109C8.2002 7.73384 8.73745 8.27109 9.4002 8.27109Z" fill="#292929"></path>
+            <path d="M9.4002 3.47031C10.0629 3.47031 10.6002 2.93305 10.6002 2.27031C10.6002 1.60757 10.0629 1.07031 9.4002 1.07031C8.73745 1.07031 8.2002 1.60757 8.2002 2.27031C8.2002 2.93305 8.73745 3.47031 9.4002 3.47031Z" fill="#292929"></path>
+        </svg>
+    </div>
+</div>
+</template></div></html>
