@@ -1,0 +1,401 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>OAEI Evaluation Report: Beyond Equivalence</title>
+<style>
+:root {
+  --bg: #f7fafc;
+  --fg: #0b1220;
+  --muted: #4a5568;
+  --card: #ffffff;
+  --accent: #2563eb;
+  --best: #d1fae5;
+  --na: #e2e8f0;
+  --table-border: #e5e7eb;
+}
+html, body { background: var(--bg); color: var(--fg); font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji"; margin: 0; padding: 0; }
+header { padding: 24px 20px 10px; }
+h1 { margin: 0; font-size: 28px; letter-spacing: 0.2px; }
+p.lead { color: var(--muted); margin: 8px 0 0; }
+main { padding: 10px 20px 40px; max-width: 1200px; margin: 0 auto; }
+.cards { display: grid; grid-template-columns: repeat(4, minmax(120px, 1fr)); gap: 12px; margin: 18px 0 10px; }
+.card { background: var(--card); border: 1px solid var(--table-border); border-radius: 14px; padding: 14px 16px; }
+.card .k { color: var(--muted); font-size: 12px; margin-bottom: 6px; }
+.card .v { font-size: 22px; font-weight: 700; }
+section.dataset { margin-top: 26px; }
+section.dataset h3 { margin: 0 0 10px; font-size: 20px; }
+.tablewrap { overflow-x: auto; border-radius: 12px; border: 1px solid var(--table-border); background: var(--card); }
+table { width: 100%; border-collapse: collapse; min-width: 720px; }
+thead th { background: #eef2ff; position: sticky; top: 0; z-index: 1; }
+th, td { border-bottom: 1px solid var(--table-border); padding: 10px 12px; text-align: right; font-variant-numeric: tabular-nums; }
+th.left, td.left { text-align: left; }
+tbody tr:hover td { background: rgba(37, 99, 235, 0.06); }
+td.hi { background: var(--best); }
+td.na { color: var(--muted); background: var(--na); }
+footer { color: var(--muted); font-size: 12px; margin-top: 28px; }
+.note { color: var(--muted); font-size: 13px; margin-top: 4px; }
+.badge { display: inline-block; padding: 3px 8px; border-radius: 999px; background: #ebf5ff; color: #1e3a8a; font-size: 12px; margin-left: 6px; border: 1px solid #c7d2fe; }
+</style>
+</head>
+<body>
+<header>
+  <h1>OAEI Evaluation Report: Beyond Equivalence <span class="badge">2025</span></h1>
+  <p class="lead">Traditional (Precision, Recall, F1-score) and <em>isAmong</em> (Precision*, Recall*, F1-score*) evaluation across datasets and matchers. Values shown as percentages.</p>
+</header>
+<main>
+  
+<div class="cards">
+  <!-- <div class="card"><div class="k">Datasets (All)</div><div class="v">10</div></div> -->
+  <div class="card"><div class="k">Datasets (Industrial Clasification Standards)</div><div class="v">5</div></div>
+  <div class="card"><div class="k">Datasets (STROMA/TaSeR)</div><div class="v">5</div></div>
+  <div class="card"><div class="k">Effective Matchers</div><div class="v">5</div></div>
+</div>
+
+  <!-- <div class="charts">
+    <div class="chartcard">
+      <h4>All (10 datasets) — Macro-average F1 (Traditional)</h4>
+      <img alt="All F1 by matcher" src="all_f1_by_matcher.png" />
+    </div>
+    <div class="chartcard">
+      <h4>All (10 datasets) — Macro-average F1* (isAmong)</h4>
+      <img alt="All F1* by matcher" src="all_f1_star_by_matcher.png" />
+    </div>
+    <div class="chartcard">
+      <h4>Industrial — Macro-average F1 (Traditional)</h4>
+      <img alt="Industrial F1 by matcher" src="industrial_f1_by_matcher.png" />
+    </div>
+    <div class="chartcard">
+      <h4>Industrial — Macro-average F1* (isAmong)</h4>
+      <img alt="Industrial F1* by matcher" src="industrial_f1_star_by_matcher.png" />
+    </div>
+    <div class="chartcard">
+      <h4>G1,G2,3,5,7 — Macro-average F1 (Traditional)</h4>
+      <img alt="G family F1 by matcher" src="g1g7_f1_by_matcher.png" />
+    </div>
+    <div class="chartcard">
+      <h4>G1,G2,3,5,7 — Macro-average F1* (isAmong)</h4>
+      <img alt="G family F1* by matcher" src="g1g7_f1_star_by_matcher.png" />
+    </div>
+  </div> -->
+
+  
+
+
+  <h2 style="margin-top:28px;">Per-Dataset Results</h2>
+  <p class="note">Cells highlighted indicate the best score within that dataset for the given metric. Matchers are listed alphabetically.</p>
+
+  
+    <section class="dataset">
+      <h3>eclass-gpc</h3>
+      <div class="tablewrap">
+      <table>
+        <thead>
+          <tr>
+            <th class="left">Matcher</th>
+            <th colspan="3">Traditional</th>
+            <th colspan="3">isAmong</th>
+          </tr>
+          <tr>
+            <th></th>
+            <th>Precision</th><th>Recall</th><th>F1-Score</th>
+            <th>Precision*</th><th>Recall*</th><th>F1-Score*</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class='left'>LogMap</td><td class="hi">32.35%</td><td class="">0.09%</td><td class="">0.17%</td><td class="">4.09%</td><td class="">1.67%</td><td class="">1.83%</td></tr><tr>
+          <td class='left'>LogMap-bio</td><td class="">30.56%</td><td class="">0.09%</td><td class="">0.17%</td><td class="">4.19%</td><td class="">1.65%</td><td class="">1.82%</td></tr><tr>
+          <td class='left'>LogMap-kg</td><td class="">30.56%</td><td class="">0.09%</td><td class="">0.17%</td><td class="">4.19%</td><td class="">1.65%</td><td class="">1.82%</td></tr><tr>
+          <!-- <td class='left'>Matcha</td><td class="">-</td><td class="">-</td><td class="">-</td><td class="">-</td><td class="">-</td><td class="">-</td></tr><tr> -->
+          <td class='left'>MDMapper</td><td class="">12.83%</td><td class="hi">0.19%</td><td class="hi">0.37%</td><td class="hi">10.81%</td><td class="hi">6.09%</td><td class="hi">6.29%</td></tr>
+        </tbody>
+      </table>
+      </div>
+    </section>
+    
+    <section class="dataset">
+      <h3>eclass-unspsc</h3>
+      <div class="tablewrap">
+      <table>
+        <thead>
+          <tr>
+            <th class="left">Matcher</th>
+            <th colspan="3">Traditional</th>
+            <th colspan="3">isAmong</th>
+          </tr>
+          <tr>
+            <th></th>
+            <th>Precision</th><th>Recall</th><th>F1-Score</th>
+            <th>Precision*</th><th>Recall*</th><th>F1-Score*</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class='left'>LogMap</td><td class="hi">17.34%</td><td class="">0.04%</td><td class="">0.07%</td><td class="">3.97%</td><td class="">1.59%</td><td class="">1.74%</td></tr><tr><td class='left'>LogMap-bio</td><td class="">16.10%</td><td class="">0.04%</td><td class="">0.08%</td><td class="">4.31%</td><td class="">1.75%</td><td class="">1.91%</td></tr><tr><td class='left'>LogMap-kg</td><td class="">16.10%</td><td class="">0.04%</td><td class="">0.08%</td><td class="">4.31%</td><td class="">1.75%</td><td class="">1.91%</td></tr><tr><td class='left'>Matcha</td><td class="">14.09%</td><td class="">0.03%</td><td class="">0.05%</td><td class="">3.32%</td><td class="">1.14%</td><td class="">1.28%</td></tr><tr><td class='left'>MDMapper</td><td class="">11.56%</td><td class="hi">0.11%</td><td class="hi">0.21%</td><td class="hi">11.86%</td><td class="hi">5.04%</td><td class="hi">5.56%</td></tr>
+        </tbody>
+      </table>
+      </div>
+    </section>
+    
+    <section class="dataset">
+      <h3>etim-eclass</h3>
+      <div class="tablewrap">
+      <table>
+        <thead>
+          <tr>
+            <th class="left">Matcher</th>
+            <th colspan="3">Traditional</th>
+            <th colspan="3">isAmong</th>
+          </tr>
+          <tr>
+            <th></th>
+            <th>Precision</th><th>Recall</th><th>F1-Score</th>
+            <th>Precision*</th><th>Recall*</th><th>F1-Score*</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class='left'>LogMap</td><td class="">40.32%</td><td class="">24.69%</td><td class="">30.62%</td><td class="">37.00%</td><td class="">34.17%</td><td class="">34.44%</td></tr><tr><td class='left'>LogMap-bio</td><td class="">88.13%</td><td class="">24.82%</td><td class="">38.74%</td><td class="">37.15%</td><td class="">34.35%</td><td class="">34.60%</td></tr><tr><td class='left'>LogMap-kg</td><td class="">70.02%</td><td class="">24.82%</td><td class="">36.65%</td><td class="">37.15%</td><td class="">34.35%</td><td class="">34.60%</td></tr><tr><td class='left'>MDMapper</td><td class="hi">96.77%</td><td class="hi">28.55%</td><td class="hi">44.09%</td><td class="hi">42.17%</td><td class="hi">38.73%</td><td class="hi">39.50%</td></tr>
+        </tbody>
+      </table>
+      </div>
+    </section>
+    
+    <section class="dataset">
+      <h3>gpc-unspsc</h3>
+      <div class="tablewrap">
+      <table>
+        <thead>
+          <tr>
+            <th class="left">Matcher</th>
+            <th colspan="3">Traditional</th>
+            <th colspan="3">isAmong</th>
+          </tr>
+          <tr>
+            <th></th>
+            <th>Precision</th><th>Recall</th><th>F1-Score</th>
+            <th>Precision*</th><th>Recall*</th><th>F1-Score*</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class='left'>LogMap</td><td class="hi">24.51%</td><td class="">0.13%</td><td class="">0.25%</td><td class="">6.92%</td><td class="">3.11%</td><td class="">3.23%</td></tr><tr><td class='left'>LogMap-bio</td><td class="hi">24.51%</td><td class="">0.13%</td><td class="">0.25%</td><td class="">6.92%</td><td class="">3.11%</td><td class="">3.23%</td></tr><tr><td class='left'>LogMap-kg</td><td class="hi">24.51%</td><td class="">0.13%</td><td class="">0.25%</td><td class="">6.92%</td><td class="">3.11%</td><td class="">3.23%</td></tr><tr><td class='left'>Matcha</td><td class="">21.83%</td><td class="">0.16%</td><td class="">0.31%</td><td class="">9.14%</td><td class="">4.28%</td><td class="">4.32%</td></tr><tr><td class='left'>MDMapper</td><td class="">13.73%</td><td class="hi">0.29%</td><td class="hi">0.56%</td><td class="hi">16.35%</td><td class="hi">8.75%</td><td class="hi">9.07%</td></tr>
+        </tbody>
+      </table>
+      </div>
+    </section>
+    
+    <section class="dataset">
+      <h3>gpc-unspscplus</h3>
+      <div class="tablewrap">
+      <table>
+        <thead>
+          <tr>
+            <th class="left">Matcher</th>
+            <th colspan="3">Traditional</th>
+            <th colspan="3">isAmong</th>
+          </tr>
+          <tr>
+            <th></th>
+            <th>Precision</th><th>Recall</th><th>F1-Score</th>
+            <th>Precision*</th><th>Recall*</th><th>F1-Score*</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class='left'>LogMap</td><td class="">8.49%</td><td class="">0.16%</td><td class="">0.31%</td><td class="">2.91%</td><td class="">2.07%</td><td class="">1.96%</td></tr><tr><td class='left'>LogMap-bio</td><td class="hi">23.15%</td><td class="">0.09%</td><td class="">0.17%</td><td class="">1.68%</td><td class="">0.90%</td><td class="">0.92%</td></tr><tr><td class='left'>LogMap-kg</td><td class="hi">23.15%</td><td class="">0.09%</td><td class="">0.17%</td><td class="">1.68%</td><td class="">0.90%</td><td class="">0.92%</td></tr><tr><td class='left'>Matcha</td><td class="">18.18%</td><td class="">0.10%</td><td class="">0.20%</td><td class="">2.30%</td><td class="">1.17%</td><td class="">1.19%</td></tr><tr><td class='left'>MDMapper</td><td class="">13.79%</td><td class="hi">0.22%</td><td class="hi">0.44%</td><td class="hi">4.23%</td><td class="hi">2.93%</td><td class="hi">2.88%</td></tr>
+        </tbody>
+      </table>
+      </div>
+    </section>
+
+    <hr style="border: none; height: 26px; background-color: #ccc;">
+    
+    <section class="dataset">
+      <h3>g1-web</h3>
+      <div class="tablewrap">
+      <table>
+        <thead>
+          <tr>
+            <th class="left">Matcher</th>
+            <th colspan="3">Traditional</th>
+            <th colspan="3">isAmong</th>
+          </tr>
+          <tr>
+            <th></th>
+            <th>Precision</th><th>Recall</th><th>F1-Score</th>
+            <th>Precision*</th><th>Recall*</th><th>F1-Score*</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class='left'>LogMap</td><td class="">3.20%</td><td class="hi">53.64%</td><td class="">6.05%</td><td class="hi">50.10%</td><td class="hi">50.22%</td><td class="hi">48.76%</td></tr><tr><td class='left'>LogMap-bio</td><td class="">60.81%</td><td class="">40.91%</td><td class="">48.91%</td><td class="">44.59%</td><td class="">41.25%</td><td class="">41.50%</td></tr><tr><td class='left'>LogMap-kg</td><td class="">16.47%</td><td class="hi">53.64%</td><td class="">25.20%</td><td class="hi">50.10%</td><td class="hi">50.22%</td><td class="hi">48.76%</td></tr><tr><td class='left'>MDMapper</td><td class="hi">88.24%</td><td class="">36.36%</td><td class="hi">51.50%</td><td class="">45.96%</td><td class="">39.20%</td><td class="">40.69%</td></tr>
+        </tbody>
+      </table>
+      </div>
+    </section>
+    
+    <section class="dataset">
+      <h3>g2-diseases</h3>
+      <div class="tablewrap">
+      <table>
+        <thead>
+          <tr>
+            <th class="left">Matcher</th>
+            <th colspan="3">Traditional</th>
+            <th colspan="3">isAmong</th>
+          </tr>
+          <tr>
+            <th></th>
+            <th>Precision</th><th>Recall</th><th>F1-Score</th>
+            <th>Precision*</th><th>Recall*</th><th>F1-Score*</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class='left'>LogMap</td><td class="">51.67%</td><td class="">69.77%</td><td class="">59.38%</td><td class="hi">45.81%</td><td class="hi">47.64%</td><td class="hi">45.92%</td></tr><tr><td class='left'>LogMap-bio</td><td class="hi">60.17%</td><td class="">61.02%</td><td class="hi">60.59%</td><td class="">44.36%</td><td class="">44.55%</td><td class="">43.85%</td></tr><tr><td class='left'>LogMap-kg</td><td class="">57.14%</td><td class="">62.15%</td><td class="">59.54%</td><td class="">43.59%</td><td class="">44.25%</td><td class="">43.31%</td></tr><tr><td class='left'>Matcha</td><td class="">2.50%</td><td class="hi">70.34%</td><td class="">4.83%</td><td class="">28.04%</td><td class="">36.68%</td><td class="">28.64%</td></tr><tr><td class='left'>MDMapper</td><td class="">57.45%</td><td class="">7.63%</td><td class="">13.47%</td><td class="">11.03%</td><td class="">7.64%</td><td class="">8.07%</td></tr>
+        </tbody>
+      </table>
+      </div>
+    </section>
+    
+    <section class="dataset">
+      <h3>g3-text</h3>
+      <div class="tablewrap">
+      <table>
+        <thead>
+          <tr>
+            <th class="left">Matcher</th>
+            <th colspan="3">Traditional</th>
+            <th colspan="3">isAmong</th>
+          </tr>
+          <tr>
+            <th></th>
+            <th>Precision</th><th>Recall</th><th>F1-Score</th>
+            <th>Precision*</th><th>Recall*</th><th>F1-Score*</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class='left'>LogMap</td><td class="hi">43.75%</td><td class="hi">7.35%</td><td class="hi">12.58%</td><td class="hi">19.88%</td><td class="hi">9.11%</td><td class="hi">11.56%</td></tr><tr><td class='left'>LogMap-bio</td><td class="hi">43.75%</td><td class="hi">7.35%</td><td class="hi">12.58%</td><td class="hi">19.88%</td><td class="hi">9.11%</td><td class="hi">11.56%</td></tr><tr><td class='left'>LogMap-kg</td><td class="hi">43.75%</td><td class="hi">7.35%</td><td class="hi">12.58%</td><td class="hi">19.88%</td><td class="hi">9.11%</td><td class="hi">11.56%</td></tr><tr><td class='left'>Matcha</td><td class="">39.85%</td><td class="">6.96%</td><td class="">11.84%</td><td class="">19.79%</td><td class="">8.91%</td><td class="">11.47%</td></tr><tr><td class='left'>MDMapper</td><td class="">38.53%</td><td class="">5.51%</td><td class="">9.64%</td><td class="">14.97%</td><td class="">6.49%</td><td class="">8.37%</td></tr>
+        </tbody>
+      </table>
+      </div>
+    </section>
+    
+    <section class="dataset">
+      <h3>g5-groceries</h3>
+      <div class="tablewrap">
+      <table>
+        <thead>
+          <tr>
+            <th class="left">Matcher</th>
+            <th colspan="3">Traditional</th>
+            <th colspan="3">isAmong</th>
+          </tr>
+          <tr>
+            <th></th>
+            <th>Precision</th><th>Recall</th><th>F1-Score</th>
+            <th>Precision*</th><th>Recall*</th><th>F1-Score*</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class='left'>LogMap</td><td class="">20.51%</td><td class="">5.13%</td><td class="">8.21%</td><td class="">16.71%</td><td class="">14.00%</td><td class="">14.24%</td></tr><tr><td class='left'>LogMap-bio</td><td class="">27.59%</td><td class="">5.13%</td><td class="">8.65%</td><td class="">15.70%</td><td class="">13.60%</td><td class="">13.80%</td></tr><tr><td class='left'>LogMap-kg</td><td class="">27.59%</td><td class="">5.13%</td><td class="">8.65%</td><td class="">15.70%</td><td class="">13.60%</td><td class="">13.80%</td></tr><tr><td class='left'>Matcha</td><td class="">23.53%</td><td class="">5.13%</td><td class="">8.42%</td><td class="">16.98%</td><td class="">14.02%</td><td class="">14.32%</td></tr><tr><td class='left'>MDMapper</td><td class="hi">46.51%</td><td class="hi">12.82%</td><td class="hi">20.10%</td><td class="hi">28.84%</td><td class="hi">24.81%</td><td class="hi">24.61%</td></tr>
+        </tbody>
+      </table>
+      </div>
+    </section>
+    
+    <section class="dataset">
+      <h3>g7-literature</h3>
+      <div class="tablewrap">
+      <table>
+        <thead>
+          <tr>
+            <th class="left">Matcher</th>
+            <th colspan="3">Traditional</th>
+            <th colspan="3">isAmong</th>
+          </tr>
+          <tr>
+            <th></th>
+            <th>Precision</th><th>Recall</th><th>F1-Score</th>
+            <th>Precision*</th><th>Recall*</th><th>F1-Score*</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class='left'>LogMap</td><td class="">64.71%</td><td class="hi">13.41%</td><td class="">22.22%</td><td class="hi">35.90%</td><td class="hi">31.24%</td><td class="hi">32.56%</td></tr><tr><td class='left'>LogMap-bio</td><td class="">78.57%</td><td class="hi">13.41%</td><td class="">22.92%</td><td class="">29.43%</td><td class="">24.77%</td><td class="">26.01%</td></tr><tr><td class='left'>LogMap-kg</td><td class="">78.57%</td><td class="hi">13.41%</td><td class="">22.92%</td><td class="">29.43%</td><td class="">24.77%</td><td class="">26.01%</td></tr><tr><td class='left'>Matcha</td><td class="">84.62%</td><td class="hi">13.41%</td><td class="">23.16%</td><td class="">30.94%</td><td class="">25.31%</td><td class="">26.87%</td></tr><tr><td class='left'>MDMapper</td><td class="hi">100.00%</td><td class="hi">13.41%</td><td class="hi">23.66%</td><td class="">27.07%</td><td class="">21.47%</td><td class="">22.92%</td></tr>
+        </tbody>
+      </table>
+      </div>
+    </section>
+    
+    <hr style="border: none; height: 26px; background-color: #ccc;">
+
+  <h2 style="margin-top:28px;">Overall Results</h2>
+    <section class="dataset">
+  <h3>Macro-Averages by Matcher — All (10 datasets)</h3>
+  <div class="tablewrap">
+  <table>
+    <thead>
+      <tr>
+        <th class="left">Matcher</th>
+        <th>Precision</th><th>Recall</th><th>F1-Score</th><th>Precision*</th><th>Recall*</th><th>F1-Score*</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td class='left'>LogMap</td><td>30.69%</td><td class="hi">17.44%</td><td>13.99%</td><td class="hi">22.33%</td><td class="hi">19.48%</td><td class="hi">19.62%</td></tr>
+      <tr><td class='left'>LogMap-bio</td><td class="hi">45.33%</td><td>15.30%</td><td class="hi">19.31%</td><td>20.82%</td><td>17.50%</td><td>17.92%</td></tr>
+      <tr><td class='left'>LogMap-kg</td><td>38.78%</td><td>16.68%</td><td>16.62%</td><td>21.29%</td><td>18.37%</td><td>18.59%</td></tr>
+      <tr><td class='left'>Matcha</td><td>25.57%</td><td>12.02%</td><td>6.10%</td><td>13.81%</td><td>11.44%</td><td>11.01%</td></tr>
+      <tr><td class='left'>MDMapper</td><td>47.94%</td><td>10.51%</td><td>16.40%</td><td>21.33%</td><td>16.12%</td><td>16.80%</td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+  
+<section class="dataset">
+  <h3>Macro-Averages by Matcher — Industrial Clasification Standards</h3>
+  <div class="tablewrap">
+  <table>
+    <thead>
+      <tr>
+        <th class="left">Matcher</th>
+        <th>Precision</th><th>Recall</th><th>F1-Score</th><th>Precision*</th><th>Recall*</th><th>F1-Score*</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td class='left'>LogMap</td><td>24.60%</td><td>5.02%</td><td>6.29%</td><td>10.98%</td><td>8.52%</td><td>8.64%</td></tr>
+      <tr><td class='left'>LogMap-bio</td><td class="hi">36.49%</td><td>5.03%</td><td>7.88%</td><td>10.85%</td><td>8.35%</td><td>8.49%</td></tr>
+      <tr><td class='left'>LogMap-kg</td><td>32.86%</td><td>5.03%</td><td>7.47%</td><td>10.85%</td><td>8.35%</td><td>8.49%</td></tr>
+      <tr><td class='left'>Matcha</td><td>13.53%</td><td>0.07%</td><td>0.14%</td><td>3.69%</td><td>1.65%</td><td>1.70%</td></tr>
+      <tr><td class='left'>MDMapper</td><td>29.74%</td><td class="hi">5.87%</td><td class="hi">9.13%</td><td class="hi">17.09%</td><td class="hi">12.31%</td><td class="hi">12.66%</td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+  
+<section class="dataset">
+  <h3>Macro-Averages by Matcher — STROMA/TaSeR</h3>
+  <div class="tablewrap">
+  <table>
+    <thead>
+      <tr>
+        <th class="left">Matcher</th>
+        <th>Precision</th><th>Recall</th><th>F1-Score</th><th>Precision*</th><th>Recall*</th><th>F1-Score*</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td class='left'>LogMap</td><td>36.77%</td><td class="hi">29.86%</td><td>21.69%</td><td class="hi">33.68%</td><td class="hi">30.44%</td><td class="hi">30.61%</td></tr>
+      <tr><td class='left'>LogMap-bio</td><td>54.18%</td><td>25.56%</td><td class="hi">30.73%</td><td>30.79%</td><td>26.66%</td><td>27.34%</td></tr>
+      tr><td class='left'>LogMap-kg</td><td>44.70%</td><td>28.34%</td><td>25.78%</td><td>31.74%</td><td>28.39%</td><td>28.69%</td></tr>
+      <tr><td class='left'>Matcha</td><td>37.62%</td><td>23.96%</td><td>12.06%</td><td>23.94%</td><td>21.23%</td><td>20.32%</td></tr>
+      <tr><td class='left'>MDMapper</td><td class="hi">66.15%</td><td>15.15%</td><td>23.67%</td><td>25.57%</td><td>19.92%</td><td>20.93%</td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+  <!-- <footer>
+    <p>All averages computed over the 10 datasets.</p>
+  </footer> -->
+
+<p><a href="OAEI2025-beyondequivalence-alignments.zip">&gt;&gt;&gt; download raw results (alignments)</a></p>
+
+</main>
+</body>
+</html>
