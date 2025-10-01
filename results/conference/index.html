@@ -400,36 +400,34 @@ ekaw#Conference_Session - 4
 </pre>
 
 
-<!--
+
 <p>Here we list top 10 conservativity principle violations by any tool:</p>
 
-Here we list ten most frequent caused new semantic relationships between concepts within input ontologies by any tool:-->
-<!--
 <pre>
-iasted#Record_of_attendance, iasted#City - 7
-	edas-iasted
-conference#Invited_speaker, conference#Conference_participant - 6
-	conference-ekaw
-iasted#Sponzorship, iasted#Registration_fee - 5
-	iasted-sigkdd
-iasted#Sponzorship, iasted#Fee - 5
-	iasted-sigkdd
-iasted#Session_chair, iasted#Speaker - 5
+iasted#Session_chair, http://iasted#Speaker - 6
 	iasted-sigkdd
 	ekaw-iasted
-iasted#Hotel_fee, iasted#Registration_fee - 5
+iasted#Record_of_attendance, http://iasted#City - 5
+	edas-iasted
+ekaw#Presenter, http://ekaw#Paper_Author - 5
+	edas-ekaw
+ekaw#Invited_Speaker, http://ekaw#Paper_Author - 5
+	edas-ekaw
+conference#Invited_speaker, http://conference#Conference_participant - 5
+	conference-ekaw
+iasted#Sponzorship, http://iasted#Registration_fee - 4
 	iasted-sigkdd
-iasted#Fee_for_extra_trip, iasted#Registration_fee - 5
+iasted#Sponzorship, http://iasted#Fee - 4
 	iasted-sigkdd
-sigkdd#Listener, sigkdd#Speaker - 4
-	iasted-sigkdd
-iasted#Video_presentation, iasted#Item - 4
+iasted#Session_chair, http://iasted#Reviewer - 4
+	ekaw-iasted
+iasted#PowerPoint_presentation, http://iasted#Item - 4
 	conference-iasted
 	edas-iasted
-iasted#Technical_commitee, iasted#Speaker - 4
-	iasted-sigkdd
+iasted#PowerPoint_presentation, http://iasted#Document - 4
+	conference-iasted
+	edas-iasted
 </pre>
--->
 
 <!--<h3><a name="dbpedia">Experiment and Evaluation of DBpedia to OntoFarm Ontologies Matching</a></h3>
 <p>For this subtrack we have three experimental test cases with regard to matching the cross-domain DBpedia ontology to three OntoFarm ontologies. We merely focus on entities of DBpedia ontology (dbo) from DBpedia namespace (therefore we prepared filtered DBpedia ontology - this is different than the last year), i.e. dbpedia.org/ontology/ and three selected ontologies from OntoFarm: confof, ekaw, sigkdd. as explained in [5].</p>
