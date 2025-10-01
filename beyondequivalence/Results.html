@@ -81,7 +81,131 @@ footer { color: var(--muted); font-size: 12px; margin-top: 28px; }
   </div> -->
 
   
+<section class="dataset">
+  <h2>Overview &amp; Interpretation</h2>
 
+  <h3>Description</h3>
+  <p>
+    This first-year track evaluates five matchers—LogMap, LogMap-bio, LogMap-kg, Matcha, and MDMapper—across
+    10 datasets from two families: <em>industrial classification standards</em> (ECLASS–GPC, ECLASS–UNSPSC,
+    ETIM–ECLASS, GPC–UNSPSC, GPC–UNSPSCplus) and <em>STROMA/TaSeR</em> (G1, G2, G3, G5, G7).
+    We report both <strong>traditional</strong> metrics (Precision, Recall, F1-Score), which reward only
+    exact identicial correspondences, and <strong><em>isAmong</em></strong> metrics (Precision*, Recall*, F1-Score*),
+    which also give credit for <em>partially correct</em> relations such as superclass/subclass and overlap.
+  </p>
+  <p>
+    Overall, the produced alignments suggest that most systems have limited support for non-equivalence
+    relations; an exception is <em>MDMapper</em>, which also captures superclass/subclass/overlap.
+  </p>
+  <p>
+    <strong>What is <em>isAmong</em>?</strong> In brief, an alignment is transformed so that each class is
+    mapped to a <em>covering set</em> of descendant classes in the other ontology (its “isAmong” set).
+    Class-level (for each class) Precision*/Recall* are then computed from the overlap between predicted and reference
+    descendant-sets, and averaged across source and target sides. 
+    This yields a fine-grained, relation-aware score that fairly rewards containment/overlap—even when a system does not predict the exact relation
+    in the reference alignment. 
+    This approach is designed for classification ontologies and avoids
+    hand-tuned weights while supporting inference of border relations (≡, ≤, ≥, ≃).
+  </p>
+
+  <h3>Analysis</h3>
+  <ul>
+    <li>
+      <strong>All 10 datasets (macro):</strong>
+      <em>LogMap</em> leads on isAmong metrics (best F1-Score*), while
+      <em>LogMap-bio</em> leads on traditional F1-Score.
+    </li>
+    <li>
+      <strong>Industrial classification standards:</strong>
+      <em>MDMapper</em> leads under both regimes, and especially under isAmong
+      (best P*, R*, F1*). 
+      Performance on these benchmarks is uniformly low, likely
+      due to the scarcity of true equivalences and the predominance of other relation
+      types. Overall, this indicates: existing matchers lack the capability to detect
+      relations across concepts that differ in granularity or classification perspective.
+      </li>
+    <li>
+      <strong>STROMA/TaSeR:</strong>
+      <em>LogMap-bio</em> achieves the best traditional F1-Score, whereas
+      <em>LogMap</em> tops Recall and all isAmong metrics
+      (Precision*, Recall*, F1-Scpre*). 
+    </li>
+  </ul>
+
+</section>
+
+ <hr style="border: none; height: 26px; background-color: #ccc;">
+<p><a href="OAEI2025-beyondequivalence-alignments.zip">&gt;&gt;&gt; download raw results (alignments)</a></p>
+
+  <h2 style="margin-top:28px;">Overall Results</h2>
+    <section class="dataset">
+  <h3>Macro-Averages by Matcher — All (10 datasets)</h3>
+  <div class="tablewrap">
+  <table>
+    <thead>
+      <tr>
+        <th class="left">Matcher</th>
+        <th>Precision</th><th>Recall</th><th>F1-Score</th><th>Precision*</th><th>Recall*</th><th>F1-Score*</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td class='left'>LogMap</td><td>30.69%</td><td class="hi">17.44%</td><td>13.99%</td><td class="hi">22.33%</td><td class="hi">19.48%</td><td class="hi">19.62%</td></tr>
+      <tr><td class='left'>LogMap-bio</td><td class="hi">45.33%</td><td>15.30%</td><td class="hi">19.31%</td><td>20.82%</td><td>17.50%</td><td>17.92%</td></tr>
+      <tr><td class='left'>LogMap-kg</td><td>38.78%</td><td>16.68%</td><td>16.62%</td><td>21.29%</td><td>18.37%</td><td>18.59%</td></tr>
+      <tr><td class='left'>Matcha</td><td>25.57%</td><td>12.02%</td><td>6.10%</td><td>13.81%</td><td>11.44%</td><td>11.01%</td></tr>
+      <tr><td class='left'>MDMapper</td><td>47.94%</td><td>10.51%</td><td>16.40%</td><td>21.33%</td><td>16.12%</td><td>16.80%</td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+  
+<section class="dataset">
+  <h3>Macro-Averages by Matcher — Industrial Clasification Standards</h3>
+  <div class="tablewrap">
+  <table>
+    <thead>
+      <tr>
+        <th class="left">Matcher</th>
+        <th>Precision</th><th>Recall</th><th>F1-Score</th><th>Precision*</th><th>Recall*</th><th>F1-Score*</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td class='left'>LogMap</td><td>24.60%</td><td>5.02%</td><td>6.29%</td><td>10.98%</td><td>8.52%</td><td>8.64%</td></tr>
+      <tr><td class='left'>LogMap-bio</td><td class="hi">36.49%</td><td>5.03%</td><td>7.88%</td><td>10.85%</td><td>8.35%</td><td>8.49%</td></tr>
+      <tr><td class='left'>LogMap-kg</td><td>32.86%</td><td>5.03%</td><td>7.47%</td><td>10.85%</td><td>8.35%</td><td>8.49%</td></tr>
+      <tr><td class='left'>Matcha</td><td>13.53%</td><td>0.07%</td><td>0.14%</td><td>3.69%</td><td>1.65%</td><td>1.70%</td></tr>
+      <tr><td class='left'>MDMapper</td><td>29.74%</td><td class="hi">5.87%</td><td class="hi">9.13%</td><td class="hi">17.09%</td><td class="hi">12.31%</td><td class="hi">12.66%</td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+  
+<section class="dataset">
+  <h3>Macro-Averages by Matcher — STROMA/TaSeR</h3>
+  <div class="tablewrap">
+  <table>
+    <thead>
+      <tr>
+        <th class="left">Matcher</th>
+        <th>Precision</th><th>Recall</th><th>F1-Score</th><th>Precision*</th><th>Recall*</th><th>F1-Score*</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td class='left'>LogMap</td><td>36.77%</td><td class="hi">29.86%</td><td>21.69%</td><td class="hi">33.68%</td><td class="hi">30.44%</td><td class="hi">30.61%</td></tr>
+      <tr><td class='left'>LogMap-bio</td><td>54.18%</td><td>25.56%</td><td class="hi">30.73%</td><td>30.79%</td><td>26.66%</td><td>27.34%</td></tr>
+      <tr><td class='left'>LogMap-kg</td><td>44.70%</td><td>28.34%</td><td>25.78%</td><td>31.74%</td><td>28.39%</td><td>28.69%</td></tr>
+      <tr><td class='left'>Matcha</td><td>37.62%</td><td>23.96%</td><td>12.06%</td><td>23.94%</td><td>21.23%</td><td>20.32%</td></tr>
+      <tr><td class='left'>MDMapper</td><td class="hi">66.15%</td><td>15.15%</td><td>23.67%</td><td>25.57%</td><td>19.92%</td><td>20.93%</td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+  <!-- <footer>
+    <p>All averages computed over the 10 datasets.</p>
+  </footer> -->
+ <hr style="border: none; height: 26px; background-color: #ccc;">
 
   <h2 style="margin-top:28px;">Per-Dataset Results</h2>
   <p class="note">Cells highlighted indicate the best score within that dataset for the given metric. Matchers are listed alphabetically.</p>
@@ -323,79 +447,6 @@ footer { color: var(--muted); font-size: 12px; margin-top: 28px; }
       </div>
     </section>
     
-    <hr style="border: none; height: 26px; background-color: #ccc;">
-
-  <h2 style="margin-top:28px;">Overall Results</h2>
-    <section class="dataset">
-  <h3>Macro-Averages by Matcher — All (10 datasets)</h3>
-  <div class="tablewrap">
-  <table>
-    <thead>
-      <tr>
-        <th class="left">Matcher</th>
-        <th>Precision</th><th>Recall</th><th>F1-Score</th><th>Precision*</th><th>Recall*</th><th>F1-Score*</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr><td class='left'>LogMap</td><td>30.69%</td><td class="hi">17.44%</td><td>13.99%</td><td class="hi">22.33%</td><td class="hi">19.48%</td><td class="hi">19.62%</td></tr>
-      <tr><td class='left'>LogMap-bio</td><td class="hi">45.33%</td><td>15.30%</td><td class="hi">19.31%</td><td>20.82%</td><td>17.50%</td><td>17.92%</td></tr>
-      <tr><td class='left'>LogMap-kg</td><td>38.78%</td><td>16.68%</td><td>16.62%</td><td>21.29%</td><td>18.37%</td><td>18.59%</td></tr>
-      <tr><td class='left'>Matcha</td><td>25.57%</td><td>12.02%</td><td>6.10%</td><td>13.81%</td><td>11.44%</td><td>11.01%</td></tr>
-      <tr><td class='left'>MDMapper</td><td>47.94%</td><td>10.51%</td><td>16.40%</td><td>21.33%</td><td>16.12%</td><td>16.80%</td></tr>
-    </tbody>
-  </table>
-  </div>
-</section>
-
-  
-<section class="dataset">
-  <h3>Macro-Averages by Matcher — Industrial Clasification Standards</h3>
-  <div class="tablewrap">
-  <table>
-    <thead>
-      <tr>
-        <th class="left">Matcher</th>
-        <th>Precision</th><th>Recall</th><th>F1-Score</th><th>Precision*</th><th>Recall*</th><th>F1-Score*</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr><td class='left'>LogMap</td><td>24.60%</td><td>5.02%</td><td>6.29%</td><td>10.98%</td><td>8.52%</td><td>8.64%</td></tr>
-      <tr><td class='left'>LogMap-bio</td><td class="hi">36.49%</td><td>5.03%</td><td>7.88%</td><td>10.85%</td><td>8.35%</td><td>8.49%</td></tr>
-      <tr><td class='left'>LogMap-kg</td><td>32.86%</td><td>5.03%</td><td>7.47%</td><td>10.85%</td><td>8.35%</td><td>8.49%</td></tr>
-      <tr><td class='left'>Matcha</td><td>13.53%</td><td>0.07%</td><td>0.14%</td><td>3.69%</td><td>1.65%</td><td>1.70%</td></tr>
-      <tr><td class='left'>MDMapper</td><td>29.74%</td><td class="hi">5.87%</td><td class="hi">9.13%</td><td class="hi">17.09%</td><td class="hi">12.31%</td><td class="hi">12.66%</td></tr>
-    </tbody>
-  </table>
-  </div>
-</section>
-
-  
-<section class="dataset">
-  <h3>Macro-Averages by Matcher — STROMA/TaSeR</h3>
-  <div class="tablewrap">
-  <table>
-    <thead>
-      <tr>
-        <th class="left">Matcher</th>
-        <th>Precision</th><th>Recall</th><th>F1-Score</th><th>Precision*</th><th>Recall*</th><th>F1-Score*</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr><td class='left'>LogMap</td><td>36.77%</td><td class="hi">29.86%</td><td>21.69%</td><td class="hi">33.68%</td><td class="hi">30.44%</td><td class="hi">30.61%</td></tr>
-      <tr><td class='left'>LogMap-bio</td><td>54.18%</td><td>25.56%</td><td class="hi">30.73%</td><td>30.79%</td><td>26.66%</td><td>27.34%</td></tr>
-      tr><td class='left'>LogMap-kg</td><td>44.70%</td><td>28.34%</td><td>25.78%</td><td>31.74%</td><td>28.39%</td><td>28.69%</td></tr>
-      <tr><td class='left'>Matcha</td><td>37.62%</td><td>23.96%</td><td>12.06%</td><td>23.94%</td><td>21.23%</td><td>20.32%</td></tr>
-      <tr><td class='left'>MDMapper</td><td class="hi">66.15%</td><td>15.15%</td><td>23.67%</td><td>25.57%</td><td>19.92%</td><td>20.93%</td></tr>
-    </tbody>
-  </table>
-  </div>
-</section>
-  <!-- <footer>
-    <p>All averages computed over the 10 datasets.</p>
-  </footer> -->
-
-<p><a href="OAEI2025-beyondequivalence-alignments.zip">&gt;&gt;&gt; download raw results (alignments)</a></p>
-
 </main>
 </body>
 </html>
