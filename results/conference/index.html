@@ -280,12 +280,10 @@ For evaluation based on logical reasoning we applied detection of conservativity
 Table below summarizes statistics per matcher. There are number of alignments (#Incoh.Align.) that cause unsatisfiable TBox after ontologies merge, total number of all conservativity principle violations within all alignments (#TotConser.Viol.) and its average per one alignment (#AvgConser.Viol.), total number of all consistency principle violations (#TotConsist.Viol.) and its average per one alignment (#AvgConsist.Viol.).
 </p>
 <p>
-It will be available soon.
-</p>
-<!--
-Comparing to the last year only three tools (ALIN, LogMap, and OntoMatch) have no consistency principle violation while four tools have some consistency principle violations. 
-Conservativity principle violations are made by all tools. Two tools (ALIN, OntoMatch) have very low number (2). Further four tools (LogMap, LogMapLt, Matcha, and MDMapper) have low numbers (less than 100). One tool (TOMATO) have more than 100 conservativity principle violations.
+Comparing to the last year only three tools (LogMap, and LSMatch) have no consistency principle violation while four tools have some consistency principle violations. 
+Conservativity principle violations are made by all tools. Two tools (LogMap, and LSMatch) have very low number (2, and 21). Further three tools (LogMapLt, Matcha, and MDMapper) have low numbers (less than 100). AgentOM and ALIN have a bit more than 100 conservativity principle violations.
 However, we should note that these conservativity principle violations can be "false positives" since the entailment in the aligned ontology can be correct although it was not derivable in the single input ontologies.
+</p>
 
 <div id="tab_wrapper" class="dataTables_wrapper no-footer"><div id="tab_filter" class="dataTables_filter"><label>Search:<input type="search" class="" placeholder="" aria-controls="tab"></label></div>
 <table id="tab" class="display" cellspacing="0" width="100%">
@@ -303,6 +301,24 @@ However, we should note that these conservativity principle violations can be "f
   <tbody>
    <tr>
     <td>ALIN</td>
+    <td>21</td>
+    <td>7</td>
+    <td>111</td>
+    <td>5.55</td>
+    <td>107</td>
+    <td>5.35</td>
+   </tr>
+   <tr>
+    <td>AgentOM</td>
+    <td>21</td>
+    <td>8</td>
+    <td>101</td>
+    <td>4.81</td>
+    <td>136</td>
+    <td>6.48</td>
+   </tr>
+   <tr>
+    <td>LSMatch</td>
     <td>21</td>
     <td>0</td>
     <td>2</td>
@@ -329,85 +345,65 @@ However, we should note that these conservativity principle violations can be "f
     <td>0.86</td>
    </tr>
    <tr>
-    <td>MATCHA</td>
-    <td>21</td>
-    <td>7</td>
-    <td>86</td>
-    <td>4.3</td>
-    <td>72</td>
-    <td>3.6</td>
-   </tr>
-   <tr>
     <td>MDMapper</td>
     <td>21</td>
-    <td>2</td>
-    <td>29</td>
-    <td>1.38</td>
-    <td>13</td>
-    <td>0.62</td>
+    <td>3</td>
+    <td>81</td>
+    <td>3.86</td>
+    <td>39</td>
+    <td>1.86</td>
    </tr>
    <tr>
-    <td>OntoMatch</td>
+    <td>Matcha</td>
     <td>21</td>
-    <td>0</td>
-    <td>2</td>
-    <td>0.1</td>
-    <td>0</td>
-    <td>0</td>
+    <td>9</td>
+    <td>90</td>
+    <td>4.5</td>
+    <td>115</td>
+    <td>5.75</td>
    </tr>
-   <tr>
-    <td>TOMATO</td>
-    <td>21</td>
-    <td>12</td>
-    <td>353</td>
-    <td>16.81</td>
-    <td>162</td>
-    <td>7.71</td>
-   </tr>   
   </tbody>
 </table>
 </div>
 
 <h4>Statistics of Consistency and Conservativity Principle Violations</h4>
 
-<p></p>
--->
 
-
-<!--
-<p>Here we list ten most frequent unsatisfiable classes appeared after ontologies merge by any tool. Four tools generated incoherent alignments.</p>
+<p>Here we list ten most frequent unsatisfiable classes appeared after ontologies merge by any tool. </p>
 
 <pre>
-iasted#Worker_non_speaker - 4
-iasted#Student_registration_fee - 4
-iasted#Student_non_speaker - 4
-iasted#Nonauthor_registration_fee - 4
-iasted#Non_speaker - 4
-ekaw#Workshop_Session - 4
-ekaw#Session - 4
-ekaw#Rejected_Paper - 4
-ekaw#Regular_Session - 4
-ekaw#Poster_Session - 4
+ekaw#Workshop_Session - 5
+ekaw#Session - 5
+ekaw#Rejected_Paper - 5
+ekaw#Regular_Session - 5
+ekaw#Poster_Session - 5
+ekaw#Industrial_Session - 5
+ekaw#Evaluated_Paper - 5
+ekaw#Demo_Session - 5
+ekaw#Contributed_Talk - 5
+ekaw#Conference_Session - 5
 </pre>
 
 <p>Here we list ten most frequent unsatisfiable classes appeared after ontologies merge by ontology pairs. These unsatisfiable classes were appeared in all ontology pairs for given ontology:</p>
 
 <pre>
-edas#Reviewer - 5
-edas#Review - 5
-cmt#Reviewer - 5
-cmt#Review - 5
-cmt#PaperFullVersion - 5
-cmt#PaperAbstract - 5
-cmt#Paper - 5
-cmt#Meta-Reviewer - 5
-cmt#Meta-Review - 5
-cmt#ExternalReviewer - 5
+ekaw#Workshop_Session - 4
+ekaw#Session - 4
+ekaw#Rejected_Paper - 4
+ekaw#Regular_Session - 4
+ekaw#Poster_Session - 4
+ekaw#Industrial_Session - 4
+ekaw#Evaluated_Paper - 4
+ekaw#Demo_Session - 4
+ekaw#Contributed_Talk - 4
+ekaw#Conference_Session - 4
 </pre>
-<p>Here we list top 10 conservativity principle violations by any tool:</p>
--->
 
-<!--Here we list ten most frequent caused new semantic relationships between concepts within input ontologies by any tool:-->
+
+<!--
+<p>Here we list top 10 conservativity principle violations by any tool:</p>
+
+Here we list ten most frequent caused new semantic relationships between concepts within input ontologies by any tool:-->
 <!--
 <pre>
 iasted#Record_of_attendance, iasted#City - 7
