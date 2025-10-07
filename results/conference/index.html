@@ -225,7 +225,6 @@ Based on this evaluation, we can see that four of the matching tools did not cha
 
 <h4><a name="visualization">Results visualization on precision/recall triangular graph based on the rar2-M3 reference alignment</a></h4>
 <p>
-TODO
 All tools are visualized in terms of their performance regarding an average F1-measure in the figure below. Tools are represented as squares or triangles. Baselines are represented as circles. Horizontal line depicts level of precision/recall while values of average F1-measure are depicted by areas bordered by corresponding lines F1-measure=0.[5|6|7].
 </p>
 <img src="evaluation_files/triangular_rar2_M3_2025.png" alt="precision/recall triangular graph for conference and F1-measure based on rar2-M3">
@@ -270,7 +269,49 @@ Why was an alignment discovered:
 -->
 <h3><a name="uncertain-ra">Evaluation Based on the Uncertain Version of the Reference Alignment</a></h3>
 
-<p>It will be available soon.</p>
+<h4><a name="uncsetting">Evaluation Setting</a></h4>
+
+<p>The confidence values of all matches in the standard (sharp) reference alignments for the conference track are all 1.0. For the uncertain version of this track, the confidence value of a match has been set equal to the percentage of a group of people who agreed with the match in question (this uncertain version is based on reference alignment labeled ra1). One key thing to note is that the group was only asked to validate matches that were already present in the existing reference alignments - so some matches had their confidence value reduced from 1.0 to a number near 0, but no new matches were added.</p>
+
+<p>There are two ways that we can evaluate alignment systems according to these `uncertain' reference alignments, which we refer to as discrete and continuous. The discrete evaluation considers any match in the reference alignment with a confidence value of 0.5 or greater to be fully correct and those with a confidence less than 0.5 to be fully incorrect. Similarly, an alignment system’s match is considered a `yes' if the confidence value is greater than or equal to the system’s threshold and a `no' otherwise. In essence, this is the same as the `sharp' evaluation approach, except that some matches have been removed because less than half of the crowdsourcing group agreed with them. The continuous evaluation strategy penalizes an alignment system more if it misses a match on which most people agree than if it misses a more controversial match. For example, if A = B with a confidence of 0.85 in the reference alignment and an alignment algorithm gives that match a confidence of 0.40, then that is counted as 0.85 * 0.40 = 0.34 of a true positive and 0.85 – 0.40 = 0.45 of a false negative.
+</p>
+
+<h4><a name="uncresults">Results</a></h4>
+<p>
+Below is a graph showing the F-measure, precision, and recall of the different alignment systems when evaluated using the sharp (s), discrete uncertain (d), and continuous uncertain (c) metrics, along with a table containing the same information. The results from this year show that more systems are assigning nuanced confidence values to the matches they produce.
+</p>
+
+<img src="./conference_files/uncertainGraph.png" alt="graph for uncertain reference alignment based evalation">
+<img src="./conference_files/uncra1-M3.png" alt="results for uncertain reference alignment based evalation">
+
+<p>
+This year, out of the 7 alignment systems, 5 (AgentOM, ALIN, LogMapLt, LSMatch, MDMapper) use 1.0 as the confidence value for all matches they identify. The remaining 2 systems (LogMap, Matcha) have a wide variation of confidence values.
+</p>
+
+<h4><a name="uncdiscussion">Discussion for Evaluation Based on the Uncertain Reference Alignments</a></h4>
+<p>
+Compared to 2024, the 2025 results reinforce the usefulness of uncertain reference alignments for distinguishing matcher behavior, while also showing clearer and more consistent recall improvements across systems. Precision remains largely stable across sharp, discrete, and continuous evaluations, but recall and F-measure benefit substantially when uncertainty is introduced. This confirms the trend observed in 2024, while also indicating that system developers are increasingly tuning their outputs to align with consensus-based evaluations.
+</p>
+
+<p>
+Systems with fixed confidence assignments (AgentOM, ALIN, LogMapLt, LSMatch, MDMapper) again show the strongest gains when moving from the sharp to the uncertain evaluations. 
+As in 2024, the discrete metric especially benefits these systems by down-weighting low-consensus matches. ALIN and LogMapLt both demonstrate significant increases in 
+recall and F-measure under the discrete and continuous metrics, confirming their ability to exploit uncertainty even without producing graded confidence values. MDMapper shows a 
+similar pattern, with balanced precision and recall across all evaluation modes.
+</p>
+
+<p>
+The two new participants, LSMatch and AgentOM, follow this same trend. Both assign uniform confidence values but achieve clear improvements when uncertainty is introduced. LSMatch, in particular, achieves the highest precision of all systems (0.88) and translates this into substantial F-measure and recall gains under both discrete and continuous evaluations. AgentOM, while less precise (0.64–0.67), shows competitive recall and strong performance under the continuous metric, placing it among the more adaptive systems despite its fixed-confidence strategy.
+</p>
+
+<p>
+Systems outputting graded confidences (LogMap, Matcha) continue to benefit most from the continuous evaluation, as observed in 2024. Their ability to align internal confidence distributions with consensus-weighted ground truth results in stable precision and higher recall than in the sharp setting. Matcha, in particular, improves substantially in recall under both discrete and continuous evaluations, demonstrating that nuanced confidence assignment is increasingly advantageous as uncertain evaluations become more prominent.
+</p>
+
+<p>
+Overall, the 2025 results highlight two main trends relative to 2024. First, recall improvements under uncertain evaluations are broader and more pronounced, reducing the performance gap across systems. Second, the addition of LSMatch and AgentOM strengthens the observation that even matchers with fixed confidences can achieve competitive results when uncertainty is considered, provided their alignments are consistent with the majority consensus. At the same time, matchers capable of producing meaningful confidence distributions (LogMap, Matcha) remain best positioned to exploit the full potential of continuous evaluation.
+</p>
+
 
 <h3><a name="logical">Evaluation Based on Logical Reasoning</a></h3>
 <p>
