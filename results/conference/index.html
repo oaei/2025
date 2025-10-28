@@ -57,14 +57,14 @@ Web page content
 
 <h2><a name="participants">Participants</a></h2><a name="participants">
 <p>
-This year, there were 7 participants (AgentOM, ALIN, LogMap, LogMapLt, LSMatch, Matcha, and MDMapper) that managed to generate meaningful output. These are the matchers that were submitted with the ability to run the Conference Track. 
-MDMapper and OntoMatch are two new matchers participating in this year.
+This year, there were 7 participants (Agent-OM, ALIN, LogMap, LogMapLt, LSMatch, Matcha, and MDMapper) that managed to generate meaningful output. These are the matchers that were submitted with the ability to run the Conference Track. 
+Agent-OM is new matcher participating in this year. 
 <!-- We also provide comparison with tools that participated in previous years of OAEI in terms of the highest average F1-measure. -->
 </p>
 
 <h3>Important Notes for Reproducibility</h3>
   <li>Resulted alignments of ALIN, LogMap, LogMapLt, Matcha, and MDMapper come from MELT.</li>
-  <li>AgentOM and LSMatch provided their own alignments as we were not able to run the tools LSMatch participated with older version (without property and instance matching) in comparsion with participation in other OAEI 2025 tracks.</li>
+  <li>Agent-OM and LSMatch provided their own alignments as we were not able to run the tools LSMatch participated with older version (without property and instance matching) in comparsion with participation in other OAEI 2025 tracks.</li>
 
 </a><h2><a name="participants"></a><a name="data">Data</a></h2>
 
@@ -93,7 +93,7 @@ We have three variants of crisp reference alignments (the confidence values for 
 <div id="tab-rar2-M3_wrapper" class="dataTables_wrapper no-footer"><div id="tab-rar2-M3_filter" class="dataTables_filter"><label>Search:<input type="search" class="" placeholder="" aria-controls="tab-rar2-M3"></label></div><table id="tab-rar2-M3" class="display dataTable no-footer" cellspacing="0" width="80%" role="grid" style="width: 80%;">
 <thead><tr role="row"><th class="sorting_asc" tabindex="0" aria-controls="tab-rar2-M3" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Matcher: activate to sort column ascending" style="width: 188px;">Matcher</th><th class="sorting" tabindex="0" aria-controls="tab-rar2-M3" rowspan="1" colspan="1" aria-label="Threshold: activate to sort column ascending" style="width: 172px;">Threshold</th><th class="sorting" tabindex="0" aria-controls="tab-rar2-M3" rowspan="1" colspan="1" aria-label="Precision: activate to sort column ascending" style="width: 162px;">Precision</th><th class="sorting" tabindex="0" aria-controls="tab-rar2-M3" rowspan="1" colspan="1" aria-label="F.5-measure: activate to sort column ascending" style="width: 200px;">F.5-measure</th><th class="sorting" tabindex="0" aria-controls="tab-rar2-M3" rowspan="1" colspan="1" aria-label="F1-measure: activate to sort column ascending" style="width: 195px;">F1-measure</th><th class="sorting" tabindex="0" aria-controls="tab-rar2-M3" rowspan="1" colspan="1" aria-label="F2-measure: activate to sort column ascending" style="width: 195px;">F2-measure</th><th class="sorting" tabindex="0" aria-controls="tab-rar2-M3" rowspan="1" colspan="1" aria-label="Recall: activate to sort column ascending" style="width: 117px;">Recall</th></tr></thead><tbody>
 
-<tr role="row" class="odd"><td>AgentOM</td><td>0.0</td><td> 0.64</td><td> 0.63</td><td> 0.61</td><td> 0.6</td><td> 0.59</td></tr>
+<tr role="row" class="odd"><td>Agent-OM</td><td>0.0</td><td> 0.64</td><td> 0.63</td><td> 0.61</td><td> 0.6</td><td> 0.59</td></tr>
 <tr role="row" class="even"><td>StringEquiv</td><td>0.0</td><td> 0.76</td><td> 0.65</td><td> 0.53</td><td> 0.45</td><td> 0.41</td></tr>
 <tr role="row" class="odd"><td>MDMapper</td><td>0.0</td><td> 0.69</td><td> 0.64</td><td> 0.58</td><td> 0.53</td><td> 0.5</td></tr>
 <tr role="row" class="even"><td>Matcha</td><td>0.89</td><td> 0.77</td><td> 0.71</td><td> 0.63</td><td> 0.57</td><td> 0.53</td></tr>
@@ -143,7 +143,7 @@ In order to provide some context for understanding matchers performance, we incl
 
 <h4><a name="discussion">Discussion for Evaluation Based on Crisp Reference Alignments</a></h4>
 <p>
-With regard to two baselines we can group tools according to matcher's position (above best edna baseline, above StringEquiv baseline, below StringEquiv baseline) sorted by F1-measure. Regarding tools position, all tools keep the same position in ra1-M3, ra2-M3 and rar2-M3. There are five matchers above edna baseline (ALIN, LogMap, Matcha, AgentOM, MDMapper), and two matchers above StringEquiv baseline (LogMapLt and LSMatch). None of the matcher scored below StringEquiv baseline. Since rar2 is not only consistency violation free (as ra2) but also conservativity violation free, we consider the rar2 as main reference alignment for this year. It will also be used within the synthesis paper.
+With regard to two baselines we can group tools according to matcher's position (above best edna baseline, above StringEquiv baseline, below StringEquiv baseline) sorted by F1-measure. Regarding tools position, all tools keep the same position in ra1-M3, ra2-M3 and rar2-M3. There are five matchers above edna baseline (ALIN, LogMap, Matcha, Agent-OM, MDMapper), and two matchers above StringEquiv baseline (LogMapLt and LSMatch). None of the matcher scored below StringEquiv baseline. Since rar2 is not only consistency violation free (as ra2) but also conservativity violation free, we consider the rar2 as main reference alignment for this year. It will also be used within the synthesis paper.
 </p>
 
 <p>
@@ -153,7 +153,7 @@ Based on the evaluation variants M1 and M2, two matchers (LSMatch and MDMapper) 
 
 <h4><a name="ref-comparison">Comparison of OAEI 2024 and 2025</a></h4>
 <p>Table below summarizes performance results of tools that participated in the last 2 years of OAEI Conference track with regard to reference alignment rar2.</p>
-<img src="./conference_files/comparison1-rar2-M3.png" alt="Perfomance results summary OAEI 2025 and 2023">
+<img src="./evaluation_files/comparison1-rar2-M3.png" alt="Perfomance results summary OAEI 2025 and 2023">
 <p>
 Based on this evaluation, we can see that two of the matching tools (LogMap, LogMapLt) did not change the results. ALIN slightly decreased in precision and increased in recall and F1-measure. Matcha and MDMapper increased in precision, but decreased in recall and F1-measure.
 </p>
@@ -285,7 +285,7 @@ Below is a graph showing the F-measure, precision, and recall of the different a
 <img src="./conference_files/uncra1-M3.png" alt="results for uncertain reference alignment based evalation">
 
 <p>
-This year, out of the 7 alignment systems, 5 (AgentOM, ALIN, LogMapLt, LSMatch, MDMapper) use 1.0 as the confidence value for all matches they identify. The remaining 2 systems (LogMap, Matcha) have a wide variation of confidence values.
+This year, out of the 7 alignment systems, 5 (Agent-OM, ALIN, LogMapLt, LSMatch, MDMapper) use 1.0 as the confidence value for all matches they identify. The remaining 2 systems (LogMap, Matcha) have a wide variation of confidence values.
 </p>
 
 <h4><a name="uncdiscussion">Discussion for Evaluation Based on the Uncertain Reference Alignments</a></h4>
@@ -294,14 +294,14 @@ Compared to 2024, the 2025 results reinforce the usefulness of uncertain referen
 </p>
 
 <p>
-Systems with fixed confidence assignments (AgentOM, ALIN, LogMapLt, LSMatch, MDMapper) again show the strongest gains when moving from the sharp to the uncertain evaluations. 
+Systems with fixed confidence assignments (Agent-OM, ALIN, LogMapLt, LSMatch, MDMapper) again show the strongest gains when moving from the sharp to the uncertain evaluations. 
 As in 2024, the discrete metric especially benefits these systems by down-weighting low-consensus matches. ALIN and LogMapLt both demonstrate significant increases in 
 recall and F-measure under the discrete and continuous metrics, confirming their ability to exploit uncertainty even without producing graded confidence values. MDMapper shows a 
 similar pattern, with balanced precision and recall across all evaluation modes.
 </p>
 
 <p>
-The two new participants, LSMatch and AgentOM, follow this same trend. Both assign uniform confidence values but achieve clear improvements when uncertainty is introduced. LSMatch, in particular, achieves the highest precision of all systems (0.88) and translates this into substantial F-measure and recall gains under both discrete and continuous evaluations. AgentOM, while less precise (0.64–0.67), shows competitive recall and strong performance under the continuous metric, placing it among the more adaptive systems despite its fixed-confidence strategy.
+The two new participants, LSMatch and Agent-OM, follow this same trend. Both assign uniform confidence values but achieve clear improvements when uncertainty is introduced. LSMatch, in particular, achieves the highest precision of all systems (0.88) and translates this into substantial F-measure and recall gains under both discrete and continuous evaluations. Agent-OM, while less precise (0.64–0.67), shows competitive recall and strong performance under the continuous metric, placing it among the more adaptive systems despite its fixed-confidence strategy.
 </p>
 
 <p>
@@ -309,7 +309,7 @@ Systems outputting graded confidences (LogMap, Matcha) continue to benefit most 
 </p>
 
 <p>
-Overall, the 2025 results highlight two main trends relative to 2024. First, recall improvements under uncertain evaluations are broader and more pronounced, reducing the performance gap across systems. Second, the addition of LSMatch and AgentOM strengthens the observation that even matchers with fixed confidences can achieve competitive results when uncertainty is considered, provided their alignments are consistent with the majority consensus. At the same time, matchers capable of producing meaningful confidence distributions (LogMap, Matcha) remain best positioned to exploit the full potential of continuous evaluation.
+Overall, the 2025 results highlight two main trends relative to 2024. First, recall improvements under uncertain evaluations are broader and more pronounced, reducing the performance gap across systems. Second, the addition of LSMatch and Agent-OM strengthens the observation that even matchers with fixed confidences can achieve competitive results when uncertainty is considered, provided their alignments are consistent with the majority consensus. At the same time, matchers capable of producing meaningful confidence distributions (LogMap, Matcha) remain best positioned to exploit the full potential of continuous evaluation.
 </p>
 
 
@@ -322,7 +322,7 @@ Table below summarizes statistics per matcher. There are number of alignments (#
 </p>
 <p>
 Comparing to the last year only three tools (LogMap, and LSMatch) have no consistency principle violation while four tools have some consistency principle violations. 
-Conservativity principle violations are made by all tools. Two tools (LogMap, and LSMatch) have very low number (2, and 21). Further three tools (LogMapLt, Matcha, and MDMapper) have low numbers (less than 100). AgentOM and ALIN have a bit more than 100 conservativity principle violations.
+Conservativity principle violations are made by all tools. Two tools (LogMap, and LSMatch) have very low number (2, and 21). Further three tools (LogMapLt, Matcha, and MDMapper) have low numbers (less than 100). Agent-OM and ALIN have a bit more than 100 conservativity principle violations.
 However, we should note that these conservativity principle violations can be "false positives" since the entailment in the aligned ontology can be correct although it was not derivable in the single input ontologies.
 </p>
 
@@ -350,7 +350,7 @@ However, we should note that these conservativity principle violations can be "f
     <td>5.35</td>
    </tr>
    <tr>
-    <td>AgentOM</td>
+    <td>Agent-OM</td>
     <td>21</td>
     <td>8</td>
     <td>101</td>
