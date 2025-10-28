@@ -13,7 +13,7 @@ table { border:solid 1px }
 
 <!-- array containg all data -->
 var data = new Array(
-"AgentOM","81","0.486","0.6","0.865",
+"Agent-OM","81","0.486","0.6","0.865",
 "LogMap","82 (0.5)","0.516","0.641","0.931",
 "LogMapLt","88","0.433","0.552","0.834",
 "Matcha","85 (0.9)","0.158","0.267","0.917",
@@ -258,7 +258,7 @@ function NumsortInverse(a,b){
 <h2>Experimental setting</h2>
 
 <p>
-We conducted experiments by executing each system in its standard setting and we compare precision, F-measure, and recall. The only exception was AgentOM which provided its own alignments (using commercial LLM).
+We conducted experiments by executing each system in its standard setting and we compare precision, F-measure, and recall. The only exception was Agent-OM which provided its own alignments (using commercial LLM).
 </p>
 
 <p>
@@ -267,7 +267,7 @@ We used the MELT platform to execute our evaluations for the executed systems. C
 
 <h2>Results</h2>
 <p>
-    This year, we had four participants: AgentOM, LogMap, LogMapLt, and Matcha. With regard to F1-Measure, LogMap achieved the highest score.
+    This year, we had four participants: Agent-OM, LogMap, LogMapLt, and Matcha. With regard to F1-Measure, LogMap achieved the highest score.
 </p>
 
 <center>
@@ -333,7 +333,7 @@ We used the MELT platform to execute our evaluations for the executed systems. C
 
       <!--<tbody>
         <tr bgcolor="FFFFDD">
-          <td width="75" style="font-family:Courier New,courier; text-align:center; border:solid 1px #808080">AgentOM</td>
+          <td width="75" style="font-family:Courier New,courier; text-align:center; border:solid 1px #808080">Agent-OM</td>
           <td width="75" style="font-family:Courier New,courier; text-align:center; border:solid 1px #808080">?</td>
           <td width="75" style="font-family:Courier New,courier; text-align:center; border:solid 1px #808080">0.486</td>
           <td width="75" style="font-family:Courier New,courier; text-align:center; border:solid 1px #808080">0.6</td>
@@ -377,7 +377,7 @@ We used the MELT platform to execute our evaluations for the executed systems. C
 
 <h3>Thresholding Evaluation</h3>
 <p>
-    LogMap and MATCHA use weights to score each pair in their generated alignments (so does AgentOM, however, all its mappings had confidence 1). To see if we can find an optimal threshhold for each system (below which the generated mappings would not be taken into consideration), we inspected the results.
+    LogMap and MATCHA use weights to score each pair in their generated alignments (Agent-OM internally applied threshold 0.9, however, all its provided mappings had confidence 1). To see if we can find an optimal threshhold for each system (below which the generated mappings would not be taken into consideration), we inspected the results.
 </p>
 
 <p>
@@ -403,10 +403,10 @@ We used the MELT platform to execute our evaluations for the executed systems. C
     <li>? - no obvious reason could be seen.</li>
 </ul>
 <p>
-    Looking at the results, it can be said that when the reason an alignment was discovered was the same name, all or at least most tools generated the mapping. LogMap and MATCHA further generated mappings based on similar strings. AgentOM and MATCHA generated mappings based on synonyms. All four systems generated mappings where the same word was present in the entities names. Below are some comments for individual tools and the reasons why they discovered the false positives:
+    Looking at the results, it can be said that when the reason an alignment was discovered was the same name, all or at least most tools generated the mapping. LogMap and MATCHA further generated mappings based on similar strings. Agent-OM and MATCHA generated mappings based on synonyms. All four systems generated mappings where the same word was present in the entities names. Below are some comments for individual tools and the reasons why they discovered the false positives:
 </p>
 <ul>
-    <li>AgentOM (43 FPs) - same name (39x), synonym (2x), contains same word (2x),</li>
+    <li>Agent-OM (43 FPs) - same name (39x), synonym (2x), contains same word (2x),</li>
     <li>LogMap (44 FPs) - same name (33x), contains same word (9x), similar string (2x),</li>
     <li>LogMapLt (48 FPs) - same name (37x), contains same word (11x),</li>
     <li>MATCHA (222 FPs) - same name (170x), synonym (6x), contains same word (37x), similar string (9x) - many mappings not found by other tools.</li>
