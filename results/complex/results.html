@@ -1,0 +1,1646 @@
+<html>
+  <head>
+  
+  <style type="text/css">
+  .tg {
+    border-collapse: collapse;
+    border-spacing: 0;
+  }
+  .tg td {
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    padding: 10px 5px;
+    border-style: solid;
+    border-width: 1px;
+    overflow: hidden;
+    word-break: normal;
+    border-color: black;
+  }
+  .tg th {
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    font-weight: normal;
+    padding: 10px 5px;
+    border-style: solid;
+    border-width: 1px;
+    overflow: hidden;
+    word-break: normal;
+    border-color: black;
+  }
+  .tg .tg-0lax {
+    text-align: left;
+    vertical-align: top;
+  }
+</style>
+
+    <title>Ontology Alignment Evaluation Initiative::Complex track</title>
+
+    <meta http-equiv="Content-type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" type="text/css" href="track_files/style.css">
+  </head>
+
+  <body>
+    <div class="header">
+      <a style="color: grey; line-height: 5mm" href="http://oaei.ontologymatching.org/2025/">Ontology Alignment Evaluation Initiative - OAEI-2025 Campaign</a><a href="http://oaei.ontologymatching.org/"><img src="track_files/oaeismall.jpg" alt="OAEI" style="border-style: none; float: right; margin-left: 5pt"></a>
+      <a href="http://www.seals-project.eu/">
+        <img width="200px" src="track_files/seals-logo.jpg" alt="OAEI" style="
+            clear: right;
+            float: right;
+            margin-left: 5pt;
+            border-style: none;
+          "></a>
+    </div>
+
+    <h1>Complex track - Evaluation</h1>
+
+    <h2>General description</h2>
+
+    <p>The complex track aims at evaluating the systems which can generate complex correspondences. The detailed description of each dataset can be found at the <a href="https://oaei.ontologymatching.org/2025/complex/index.html">OAEI Complex track page</a>
+    </p>
+
+    <a name="datasets"><h2>Conference dataset</h2></a>
+
+    <p>We had only one participant: Matcha system. Matcha delivered simple equivalences, complex correspondences, and subsumptions. Within this track only complex correspondences have been evaluated. With regard to complex correspondences no TPs were identified. All complex correspondences contained intersections (of classes and also of classes and properties). While the intersection of classes is an important construct, EDOAL does not allow for directly intersecting a class and a property. Instead, class restrictions should be applied, such as AttributeDomainRestriction.</p>
+    <p>Alignments from Matcha:</p>
+    <ul>
+    <li><a href="https://oaei.ontologymatching.org/2025/results/complex/data/matcha_conference_cmt-conference.rdf">matcha_conference_cmt-conference.rdf</a>
+    </li><li><a href="https://oaei.ontologymatching.org/2025/results/complex/data/matcha_conference_conference-ekaw.rdf">matcha_conference_conference-ekaw.rdf</a>
+    </li><li><a href="https://oaei.ontologymatching.org/2025/results/complex/data/matcha_conference_cmt-ekaw.rdf">matcha_conference_cmt-ekaw.rdf</a>
+    </li></ul>
+
+    <style type="text/css">
+      .tg {
+        border-collapse: collapse;
+        border-spacing: 0;
+      }
+      .tg td {
+        font-family: Arial, sans-serif;
+        font-size: 10px;
+        padding: 10px 5px;
+        border-style: solid;
+        border-width: 1px;
+        overflow: hidden;
+        word-break: normal;
+        border-color: black;
+      }
+      .tg th {
+        font-family: Arial, sans-serif;
+        font-size: 10px;
+        font-weight: normal;
+        padding: 10px 5px;
+        border-style: solid;
+        border-width: 1px;
+        overflow: hidden;
+        word-break: normal;
+        border-color: black;
+      }
+      .tg .tg-46ru {
+        background-color: #96fffb;
+        border-color: inherit;
+        text-align: left;
+        vertical-align: top;
+      }
+      .tg .tg-0pky {
+        border-color: inherit;
+        text-align: left;
+        vertical-align: top;
+      }
+      .tg .tg-bolj {
+        background-color: #9fc0cf;
+        border-color: inherit;
+        text-align: center;
+        vertical-align: top;
+      }
+      .tg .tg-mfhl {
+        background-color: #ffffff;
+        border-color: inherit;
+        text-align: center;
+        vertical-align: top;
+      }
+      .tg .tg-py60 {
+        background-color: #d2b9d8;
+        border-color: inherit;
+        text-align: center;
+        vertical-align: top;
+      }
+      .tg .tg-f79y {
+        background-color: #6d5da5;
+        border-color: inherit;
+        text-align: center;
+        vertical-align: top;
+      }
+      .tg .tg-jw0j {
+        font-weight: bold;
+        background-color: #96fffb;
+        border-color: inherit;
+        text-align: center;
+        vertical-align: top;
+      }
+      .tg .tg-gdc4 {
+        background-color: #96fffb;
+        border-color: inherit;
+        text-align: center;
+        vertical-align: top;
+      }
+    </style>
+     
+    <h2>Other datasets</h2>
+
+    <p>The following results relate to seven datasets: Populated Conference, Hydrography, GeoLink, Populated GeoLink, Populated Enslaved, Taxon, and Biomedical. All datasets and references can be found at <a href="https://github.com/liseda-lab/complex-OM-benchmark">https://github.com/liseda-lab/complex-OM-benchmark</a>.</p>
+    <p>This year we had the participation of two systems: CMatch and Matcha. CMatch produces simple and complex 1:n mappings, and Matcha produces simple, subsumption and complex 1:n mappings. Matcha did not format mappings according to the expected EDOAL format. The results from three systems that competed previously are presented as baselines: AMLC, AROA, and CANARD (using alignments from OAEI 2020).</p>
+
+    <p>All alignments and evaluation results can be consulted <a href="https://github.com/liseda-lab/complex-OM-benchmark/tree/main/2025_OAEI/">here</a>.</p>
+
+    <h4>Graph Edit Distance (GED) evaluation</h4>
+    <p>This evaluation converts both mapping and reference into graphs and calculated the edit distance between them. This metric evaluates simple 1:1 mappings and complex 1:n mappings, regardless of relation. Best results in each row by F-measure are in bold.</p>
+
+    <p>Matcha achieved the best F-measure overall, possibly explained by the fact that it produced more simple mappings than the other systems which improved the overall performance. Right behind is CANARD, which produces very consistent results and is less computationally heavy than Matcha, since Matcha uses language models in its strategy. CMatch achieves solid precision results but performs worse in terms of recall, resulting in lower values of F-measure. It is interesting to note that AROA outperforms all other systems in the single task it participated. Only Matcha participated in the complex multi-ontology matching task of the biomedical domain, so it will be interesting to see how other systems tackle this new challenge in the future. </p>
+
+    <table class="tg">
+        <tr>
+          <th class="tg-0pky" rowspan="2"></th>
+          <th class="tg-mfhl" colspan="3"><b>AMLC (2020)</b></th>
+          <th class="tg-bolj" colspan="3"><b>AROA (2020)</b></th>
+          <th class="tg-mfhl" colspan="3"><b>CANARD (2020)</b></th>
+          <th class="tg-bolj" colspan="3"><b>CMatch (2025)</b></th>
+          <th class="tg-mfhl" colspan="3"><b>Matcha (2025)</b></th>
+        </tr>
+        <tr>
+          <td class="tg-mfhl">Precision</td>
+          <td class="tg-mfhl">Recall</td>
+          <td class="tg-mfhl">F-measure</td>
+          <td class="tg-bolj">Precision</td>
+          <td class="tg-bolj">Recall</td>
+          <td class="tg-bolj">F-measure</td>
+          <td class="tg-mfhl">Precision</td>
+          <td class="tg-mfhl">Recall</td>
+          <td class="tg-mfhl">F-measure</td>
+          <td class="tg-bolj">Precision</td>
+          <td class="tg-bolj">Recall</td>
+          <td class="tg-bolj">F-measure</td>
+          <td class="tg-mfhl">Precision</td>
+          <td class="tg-mfhl">Recall</td>
+          <td class="tg-mfhl">F-measure</td>
+        </tr>
+        <tr>
+          <td class="tg-py60">(populated) cmt-conference</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-py60">0.284</td>
+          <td class="tg-py60">0.464</td>
+          <td class="tg-py60"><b>0.352</b></td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-py60">-</td>
+        </tr>
+        <tr>
+          <td class="tg-py60">(populated) cmt-confOf</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-py60">0.292</td>
+          <td class="tg-py60">0.496</td>
+          <td class="tg-py60"><b>0.367</b></td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-py60">-</td>
+        </tr>
+        <tr>
+          <td class="tg-py60">(populated) cmt-edas</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-py60">0.275</td>
+          <td class="tg-py60">0.487</td>
+          <td class="tg-py60"><b>0.352</b></td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-py60">-</td>
+        </tr>
+        <tr>
+          <td class="tg-py60">(populated) cmt-ekaw</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-py60">0.275</td>
+          <td class="tg-py60">0.330</td>
+          <td class="tg-py60">0.300</td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-py60">-</td>
+        </tr>
+        <tr>
+          <td class="tg-py60">(populated) conference-confOf</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-py60">0.388</td>
+          <td class="tg-py60">0.483</td>
+          <td class="tg-py60"><b>0.430</b></td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-py60">-</td>
+        </tr>
+        <tr>
+          <td class="tg-py60">(populated) conference-edas</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-py60">0.397</td>
+          <td class="tg-py60">0.423</td>
+          <td class="tg-py60"><b>0.410</b></td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-py60">-</td>
+        </tr>
+        <tr>
+          <td class="tg-py60">(populated) conference-ekaw</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-py60">0.252</td>
+          <td class="tg-py60">0.256</td>
+          <td class="tg-py60">0.254</td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-py60">-</td>
+        </tr>
+         <tr>
+          <td class="tg-mfhl">cmt-conference</td>
+          <td class="tg-mfhl">0.557</td>
+          <td class="tg-mfhl">0.080</td>
+          <td class="tg-mfhl">0.139</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-bolj">1.000</td>
+          <td class="tg-bolj">0.029</td>
+          <td class="tg-bolj">0.056</td>
+          <td class="tg-mfhl">0.526</td>
+          <td class="tg-mfhl">0.365</td>
+          <td class="tg-mfhl"><b>0.431</b></td>
+        </tr>
+        <tr>
+          <td class="tg-mfhl">cmt-confOf</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+        </tr>
+        <tr>
+          <td class="tg-mfhl">cmt-edas</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+        </tr>
+        <tr>
+          <td class="tg-mfhl">cmt-ekaw</td>
+          <td class="tg-mfhl">0.255</td>
+          <td class="tg-mfhl">0.0.60</td>
+          <td class="tg-mfhl">0.097</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-bolj">0.615</td>
+          <td class="tg-bolj">0.181</td>
+          <td class="tg-bolj">0.280</td>
+          <td class="tg-mfhl">0.529</td>
+          <td class="tg-mfhl">0.327</td>
+          <td class="tg-mfhl"><b>0.404</b></td>
+        </tr>
+        <tr>
+          <td class="tg-mfhl">conference-confOf</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+        </tr>
+        <tr>
+          <td class="tg-mfhl">conference-edas</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+        </tr>
+        <tr>
+          <td class="tg-mfhl">conference-ekaw</td>
+          <td class="tg-mfhl">0.374</td>
+          <td class="tg-mfhl">0.108</td>
+          <td class="tg-mfhl">0.167</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-mfhl">0.587</td>
+          <td class="tg-mfhl">0.595</td>
+          <td class="tg-mfhl"><b>0.591</b></td>
+        </tr>
+        <tr>
+          <td class="tg-py60">cree-swo</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-f79y">0.000</td>
+          <td class="tg-f79y">0.000</td>
+          <td class="tg-f79y">0.000</td>
+          <td class="tg-py60">0.500</td>
+          <td class="tg-py60">0.064</td>
+          <td class="tg-py60"><b>0.113</b></td>
+        </tr>
+        <tr>
+          <td class="tg-py60">hydro3-swo</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-f79y">0.319</td>
+          <td class="tg-f79y">0.154</td>
+          <td class="tg-f79y">0.208</td>
+          <td class="tg-py60">0.645</td>
+          <td class="tg-py60">0.507</td>
+          <td class="tg-py60"><b>0.568</b></td>
+        </tr>
+        <tr>
+          <td class="tg-py60">hydroOntology_native-swo</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-py60">0.372</td>
+          <td class="tg-py60">0.062</td>
+          <td class="tg-py60"><b>0.106</b></td>
+        </tr>
+        <tr>
+          <td class="tg-py60">hydroOntology_translated-swo</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-f79y">0.307</td>
+          <td class="tg-f79y">0.118</td>
+          <td class="tg-f79y">0.170</td>
+          <td class="tg-py60">0.421</td>
+          <td class="tg-py60">0.303</td>
+          <td class="tg-py60"><b>0.353</b></td>
+        </tr>
+        <tr>
+          <td class="tg-mfhl">gbo-gmo</td>
+          <td class="tg-mfhl">0.000</td>
+          <td class="tg-mfhl">0.000</td>
+          <td class="tg-mfhl">0.000</td>
+          <td class="tg-bolj">0.472</td>
+          <td class="tg-bolj">0.492</td>
+          <td class="tg-bolj"><b>0.482</b></td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-bolj">0.644</td>
+          <td class="tg-bolj">0.176</td>
+          <td class="tg-bolj">0.276</td>
+          <td class="tg-mfhl">0.287</td>
+          <td class="tg-mfhl">0.467</td>
+          <td class="tg-mfhl">0.355</td>
+        </tr>
+        <tr>
+          <td class="tg-mfhl">popgbo-popgmo</td>
+          <td class="tg-mfhl">0.000</td>
+          <td class="tg-mfhl">0.000</td>
+          <td class="tg-mfhl">0.000</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-mfhl">0.481</td>
+          <td class="tg-mfhl">0.453</td>
+          <td class="tg-mfhl"><b>0.467</b></td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-mfhl">0.245</td>
+          <td class="tg-mfhl">0.391</td>
+          <td class="tg-mfhl">0.301</td>
+        </tr>
+        <tr>
+          <td class="tg-py60">enslaved wikidata</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-py60">0.049</td>
+          <td class="tg-py60">0.188</td>
+          <td class="tg-py60">0.078</td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-py60">0.048</td>
+          <td class="tg-py60">0.688</td>
+          <td class="tg-py60"><b>0.091</b></td>
+        </tr>
+        <tr>
+          <td class="tg-mfhl">hp</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-mfhl">0.465</td>
+          <td class="tg-mfhl">0.465</td>
+          <td class="tg-mfhl"><b>0.465</b></td>
+        </tr>
+        <tr>
+          <td class="tg-mfhl">mp</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-mfhl">0.529</td>
+          <td class="tg-mfhl">0.529</td>
+          <td class="tg-mfhl"><b>0.529</b></td>
+        </tr>
+        <tr>
+          <td class="tg-mfhl">wbp</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-mfhl">0.554</td>
+          <td class="tg-mfhl">0.554</td>
+          <td class="tg-mfhl"><b>0.554</b></td>
+        </tr>
+      </table>
+
+    <h4>Tree Edit Distance (TED)</h4>
+    <p>This metric compares the matcher proposed alignment with the reference alignment using Tree Edit Distance (TED) and finds the most similar pairs of correspondences using an assignment algorithm. The metric also follows desired properties for complex matching evaluation based on reference alignments.</p>
+
+    <table class="tg">
+        <tr>
+          <th class="tg-0pky" rowspan="2"></th>
+          <th class="tg-mfhl" colspan="3"><b>AMLC (2020)</b></th>
+          <th class="tg-bolj" colspan="3"><b>AROA (2020)</b></th>
+          <th class="tg-mfhl" colspan="3"><b>CANARD (2020)</b></th>
+          <th class="tg-bolj" colspan="3"><b>CMatch (2025)</b></th>
+          <th class="tg-mfhl" colspan="3"><b>Matcha (2025)</b></th>
+        </tr>
+        <tr>
+          <td class="tg-mfhl">Precision</td>
+          <td class="tg-mfhl">Recall</td>
+          <td class="tg-mfhl">F-measure</td>
+          <td class="tg-bolj">Precision</td>
+          <td class="tg-bolj">Recall</td>
+          <td class="tg-bolj">F-measure</td>
+          <td class="tg-mfhl">Precision</td>
+          <td class="tg-mfhl">Recall</td>
+          <td class="tg-mfhl">F-measure</td>
+          <td class="tg-bolj">Precision</td>
+          <td class="tg-bolj">Recall</td>
+          <td class="tg-bolj">F-measure</td>
+          <td class="tg-mfhl">Precision</td>
+          <td class="tg-mfhl">Recall</td>
+          <td class="tg-mfhl">F-measure</td>
+        </tr>
+        <tr>
+          <td class="tg-py60">(populated) cmt-conference</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-py60">0.183</td>
+          <td class="tg-py60">0.566</td>
+          <td class="tg-py60"><b>0.277</b></td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-py60">-</td>
+        </tr>
+        <tr>
+          <td class="tg-py60">(populated) cmt-confOf</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-py60">0.270</td>
+          <td class="tg-py60">0.588</td>
+          <td class="tg-py60"><b>0.370</b></td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-py60">-</td>
+        </tr>
+        <tr>
+          <td class="tg-py60">(populated) cmt-edas</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-py60">0.226</td>
+          <td class="tg-py60">0.712</td>
+          <td class="tg-py60"><b>0.343</b></td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-py60">-</td>
+        </tr>
+        <tr>
+          <td class="tg-py60">(populated) cmt-ekaw</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-py60">0.218</td>
+          <td class="tg-py60">0.468</td>
+          <td class="tg-py60"><b>0.297</b></td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-py60">-</td>
+        </tr>
+        <tr>
+          <td class="tg-py60">(populated) conference-confOf</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-py60">0.271</td>
+          <td class="tg-py60">0.467</td>
+          <td class="tg-py60"><b>0.343</b></td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-py60">-</td>
+        </tr>
+        <tr>
+          <td class="tg-py60">(populated) conference-edas</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-py60">0.228</td>
+          <td class="tg-py60">0.510</td>
+          <td class="tg-py60"><b>0.315</b></td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-py60">-</td>
+        </tr>
+        <tr>
+          <td class="tg-py60">(populated) conference-ekaw</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-py60">0.171</td>
+          <td class="tg-py60">0.506</td>
+          <td class="tg-py60"><b>0.256</b></td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-py60">-</td>
+        </tr>
+         <tr>
+          <td class="tg-mfhl">cmt-conference</td>
+          <td class="tg-mfhl">0.000</td>
+          <td class="tg-mfhl">0.000</td>
+          <td class="tg-mfhl">0.000</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</b></td>
+          <td class="tg-bolj">0.000</td>
+          <td class="tg-bolj">0.000</td>
+          <td class="tg-bolj">0.000</td>
+          <td class="tg-mfhl">0.000</td>
+          <td class="tg-mfhl">0.000</td>
+          <td class="tg-mfhl">0.000</td>
+        </tr>
+        <tr>
+          <td class="tg-mfhl">cmt-confOf</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-bolj">0.750</td>
+          <td class="tg-bolj">0.088</td>
+          <td class="tg-bolj"><b>0.158</b></td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+        </tr>
+        <tr>
+          <td class="tg-mfhl">cmt-edas</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-bolj">0.667</td>
+          <td class="tg-bolj">0.077</td>
+          <td class="tg-bolj"><b>0.138</b></td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+        </tr>
+        <tr>
+          <td class="tg-mfhl">cmt-ekaw</td>
+          <td class="tg-mfhl">0.000</td>
+          <td class="tg-mfhl">0.000</td>
+          <td class="tg-mfhl">0.000</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-bolj">0.667</td>
+          <td class="tg-bolj">0.176</td>
+          <td class="tg-bolj"><b>0.279</b></td>
+          <td class="tg-mfhl">0.000</td>
+          <td class="tg-mfhl">0.000</td>
+          <td class="tg-mfhl">0.000</td>
+        </tr>
+        <tr>
+          <td class="tg-mfhl">conference-confOf</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-bolj">0.000</td>
+          <td class="tg-bolj">0.000</td>
+          <td class="tg-bolj">0.000</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+        </tr>
+        <tr>
+          <td class="tg-mfhl">conference-edas</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-bolj">1</td>
+          <td class="tg-bolj">0.040</td>
+          <td class="tg-bolj"><b>0.077</b></td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+        </tr>
+        <tr>
+          <td class="tg-mfhl">conference-ekaw</td>
+          <td class="tg-mfhl">0.000</td>
+          <td class="tg-mfhl">0.000</td>
+          <td class="tg-mfhl">0.000</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-bolj">0.000</td>
+          <td class="tg-bolj">0.000</td>
+          <td class="tg-bolj">0.000</td>
+          <td class="tg-mfhl">0.000</td>
+          <td class="tg-mfhl">0.000</td>
+          <td class="tg-mfhl">0.000</td>
+        </tr>
+        <tr>
+          <td class="tg-py60">cree-swo</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-f79y">0.286</td>
+          <td class="tg-f79y">0.013</td>
+          <td class="tg-f79y"><b>0.025</b></td>
+          <td class="tg-py60">0.077</td>
+          <td class="tg-py60">0.011</td>
+          <td class="tg-py60">0.019</td>
+        </tr>
+        <tr>
+          <td class="tg-py60">hydro3-swo</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-f79y">0.561</td>
+          <td class="tg-f79y">0.228</td>
+          <td class="tg-f79y"><b>0.325</b></td>
+          <td class="tg-py60">0.000</td>
+          <td class="tg-py60">0.000</td>
+          <td class="tg-py60">0.000</td>
+        </tr>
+        <tr>
+          <td class="tg-py60">hydroOntology_native-swo</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-f79y">0.553</td>
+          <td class="tg-f79y">0.033</td>
+          <td class="tg-f79y"><b>0.062</b></td>
+          <td class="tg-py60">0.079</td>
+          <td class="tg-py60">0.004</td>
+          <td class="tg-py60">0.008</td>
+        </tr>
+        <tr>
+          <td class="tg-py60">hydroOntology_translated-swo</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-py60">0.569</td>
+          <td class="tg-py60">0.202</td>
+          <td class="tg-py60"><b>0.299</b></td>
+        </tr>
+        <tr>
+          <td class="tg-mfhl">gbo-gmo</td>
+          <td class="tg-mfhl">0.013</td>
+          <td class="tg-mfhl">0.004</td>
+          <td class="tg-mfhl">0.006</td>
+          <td class="tg-bolj">0.706</td>
+          <td class="tg-bolj">0.267</td>
+          <td class="tg-bolj"><b>0.388</b></td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-bolj">0.773</td>
+          <td class="tg-bolj">0.056</td>
+          <td class="tg-bolj">0.104</td>
+          <td class="tg-mfhl">0.003</td>
+          <td class="tg-mfhl">0.002</td>
+          <td class="tg-mfhl">0.002</td>
+        </tr>
+        <tr>
+          <td class="tg-mfhl">popgbo-popgmo</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-mfhl">0.448</td>
+          <td class="tg-mfhl">0.182</td>
+          <td class="tg-mfhl"><b>0.258</b></td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-mfhl">0.002</td>
+          <td class="tg-mfhl">0.004</td>
+          <td class="tg-mfhl">0.003</td>
+        </tr>
+        <tr>
+          <td class="tg-py60">enslaved wikidata</td>
+          <td class="tg-py60">0.005</td>
+          <td class="tg-py60">0.002</td>
+          <td class="tg-py60">0.003</td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-py60">0.218</td>
+          <td class="tg-py60">0.166</td>
+          <td class="tg-py60"><b>0.189</b></td>
+          <td class="tg-f79y">0.000</td>
+          <td class="tg-f79y">0.000</td>
+          <td class="tg-f79y">0.000</td>
+          <td class="tg-py60">0.001</td>
+          <td class="tg-py60">0.002</td>
+          <td class="tg-py60">0.001</td>
+        </tr>
+        <tr>
+          <td class="tg-mfhl">taxon-agrovoc</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-mfhl">0.580</td>
+          <td class="tg-mfhl">0.281</td>
+          <td class="tg-mfhl"><b>0.379</b></td>
+          <td class="tg-bolj">0.071</td>
+          <td class="tg-bolj">0.002</td>
+          <td class="tg-bolj">0.004</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+        </tr>
+        <tr>
+          <td class="tg-mfhl">taxon-dbpedia</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-mfhl">0.211</td>
+          <td class="tg-mfhl">0.286</td>
+          <td class="tg-mfhl"><b>0.243</b></td>
+          <td class="tg-bolj">0.333</td>
+          <td class="tg-bolj">0.040</td>
+          <td class="tg-bolj">0.071</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+        </tr>
+        <tr>
+          <td class="tg-mfhl">taxon-taxref</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-mfhl">0.309</td>
+          <td class="tg-mfhl">0.295</td>
+          <td class="tg-mfhl"><b>0.302</b></td>
+          <td class="tg-bolj">0.000</td>
+          <td class="tg-bolj">0.000</td>
+          <td class="tg-bolj">0.000</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+        </tr>
+      </table>
+
+    
+    <h4>Class evaluation</h4>
+    <p>In this evaluation, the classes used in each mapping were evaluated against the classes used by the reference. This metric evaluates all mappings: simple 1:1, complex 1:n, and complex n:m. False positives are not presented in this summarised table.</p>
+
+    <p>In general, the results mostly match the results obtained by the other evaluations. All systems obtain a fair amount of fully correct class sets in the tasks they participate. It is interesting to note that CANARD is the only system that consistently achieves more class sets in the "contains" category, while the categories of "contained" and "overlap" achieve lower counts across all systems. Counting all "correct" hits, AMLC achieves 0 across 5 tasks, AROA achieves 18 in 1 task, CANARD achieves 90 across 9 tasks, CMatch achieves 17 across 7 tasks, and Matcha achieves 100 across 10 tasks (discarding the biomedical tasks where only Matcha competed).</p>
+
+    <p>Looking at the overall results, Matcha and CANARD obtain mostly comparable results.Matcha achieves less "correct" and "contains" class sets in the conference tasks but also less "incorrect", with the inverse being true for the GeoLink and Populated Enslaved tasks where it finds more "incorrect" and mostly equal counts of the other categories.</p>
+
+    <table class="tg">
+        <tr>
+          <th class="tg-0pky" rowspan="2"></th>
+          <th class="tg-mfhl" colspan="5"><b>AMLC (2020)</b></th>
+          <th class="tg-bolj" colspan="5"><b>AROA (2020)</b></th>
+          <th class="tg-mfhl" colspan="5"><b>CANARD (2020)</b></th>
+          <th class="tg-bolj" colspan="5"><b>CMatch (2025)</b></th>
+          <th class="tg-mfhl" colspan="5"><b>Matcha (2025)</b></th>
+        </tr>
+        <tr>
+          <td class="tg-mfhl">Correct</td>
+          <td class="tg-mfhl">Contains</td>
+          <td class="tg-mfhl">Contained</td>
+          <td class="tg-mfhl">Overlap</td>
+          <td class="tg-mfhl">Incorrect</td>
+          <td class="tg-bolj">Correct</td>
+          <td class="tg-bolj">Contains</td>
+          <td class="tg-bolj">Contained</td>
+          <td class="tg-bolj">Overlap</td>
+          <td class="tg-bolj">Incorrect</td>
+          <td class="tg-mfhl">Correct</td>
+          <td class="tg-mfhl">Contains</td>
+          <td class="tg-mfhl">Contained</td>
+          <td class="tg-mfhl">Overlap</td>
+          <td class="tg-mfhl">Incorrect</td>
+          <td class="tg-bolj">Correct</td>
+          <td class="tg-bolj">Contains</td>
+          <td class="tg-bolj">Contained</td>
+          <td class="tg-bolj">Overlap</td>
+          <td class="tg-bolj">Incorrect</td>
+          <td class="tg-mfhl">Correct</td>
+          <td class="tg-mfhl">Contains</td>
+          <td class="tg-mfhl">Contained</td>
+          <td class="tg-mfhl">Overlap</td>
+          <td class="tg-mfhl">Incorrect</td>
+        </tr>
+         <tr>
+          <td class="tg-mfhl">cmt-conference</td>
+          <td class="tg-mfhl">0</td>
+          <td class="tg-mfhl">0</td>
+          <td class="tg-mfhl">0</td>
+          <td class="tg-mfhl">2</td>
+          <td class="tg-mfhl">2</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-mfhl">14</td>
+          <td class="tg-mfhl">4</td>
+          <td class="tg-mfhl">1</td>
+          <td class="tg-mfhl">4</td>
+          <td class="tg-mfhl">41</td>
+          <td class="tg-bolj">1</td>
+          <td class="tg-bolj">0</td>
+          <td class="tg-bolj">0</td>
+          <td class="tg-bolj">0</td>
+          <td class="tg-bolj">0</td>
+          <td class="tg-mfhl">8</td>
+          <td class="tg-mfhl">1</td>
+          <td class="tg-mfhl">2</td>
+          <td class="tg-mfhl">0</td>
+          <td class="tg-mfhl">7</td>
+        </tr>
+        <tr>
+          <td class="tg-mfhl">cmt-confOf</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-mfhl">7</td>
+          <td class="tg-mfhl">2</td>
+          <td class="tg-mfhl">0</td>
+          <td class="tg-mfhl">0</td>
+          <td class="tg-mfhl">12</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+        </tr>
+        <tr>
+          <td class="tg-mfhl">cmt-edas</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-mfhl">12</td>
+          <td class="tg-mfhl">8</td>
+          <td class="tg-mfhl">0</td>
+          <td class="tg-mfhl">2</td>
+          <td class="tg-mfhl">29</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+        </tr>
+        <tr>
+          <td class="tg-mfhl">cmt-ekaw</td>
+          <td class="tg-mfhl">0</td>
+          <td class="tg-mfhl">0</td>
+          <td class="tg-mfhl">0</td>
+          <td class="tg-mfhl">0</td>
+          <td class="tg-mfhl">5</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-mfhl">7</td>
+          <td class="tg-mfhl">10</td>
+          <td class="tg-mfhl">1</td>
+          <td class="tg-mfhl">0</td>
+          <td class="tg-mfhl">31</td>
+          <td class="tg-bolj">5</td>
+          <td class="tg-bolj">0</td>
+          <td class="tg-bolj">0</td>
+          <td class="tg-bolj">0</td>
+          <td class="tg-bolj">1</td>
+          <td class="tg-mfhl">8</td>
+          <td class="tg-mfhl">1</td>
+          <td class="tg-mfhl">2</td>
+          <td class="tg-mfhl">0</td>
+          <td class="tg-mfhl">8</td>
+        </tr>
+        <tr>
+          <td class="tg-mfhl">conference-confOf</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-mfhl">10</td>
+          <td class="tg-mfhl">2</td>
+          <td class="tg-mfhl">0</td>
+          <td class="tg-mfhl">0</td>
+          <td class="tg-mfhl">13</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+        </tr>
+        <tr>
+          <td class="tg-mfhl">conference-edas</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-mfhl">9</td>
+          <td class="tg-mfhl">1</td>
+          <td class="tg-mfhl">0</td>
+          <td class="tg-mfhl">0</td>
+          <td class="tg-mfhl">13</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+        </tr>
+        <tr>
+          <td class="tg-mfhl">conference-ekaw</td>
+          <td class="tg-mfhl">0</td>
+          <td class="tg-mfhl">0</td>
+          <td class="tg-mfhl">0</td>
+          <td class="tg-mfhl">2</td>
+          <td class="tg-mfhl">3</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-mfhl">14</td>
+          <td class="tg-mfhl">5</td>
+          <td class="tg-mfhl">1</td>
+          <td class="tg-mfhl">1</td>
+          <td class="tg-mfhl">35</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-mfhl">14</td>
+          <td class="tg-mfhl">0</td>
+          <td class="tg-mfhl">1</td>
+          <td class="tg-mfhl">0</td>
+          <td class="tg-mfhl">10</td>
+        </tr>
+        <tr>
+          <td class="tg-py60">cree-swo</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-f79y">0</td>
+          <td class="tg-f79y">0</td>
+          <td class="tg-f79y">0</td>
+          <td class="tg-f79y">0</td>
+          <td class="tg-f79y">0</td>
+          <td class="tg-py60">3</td>
+          <td class="tg-py60">0</td>
+          <td class="tg-py60">0</td>
+          <td class="tg-py60">0</td>
+          <td class="tg-py60">6</td>
+        </tr>
+        <tr>
+          <td class="tg-py60">hydro3-swo</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-f79y">5</td>
+          <td class="tg-f79y">0</td>
+          <td class="tg-f79y">1</td>
+          <td class="tg-f79y">0</td>
+          <td class="tg-f79y">3</td>
+          <td class="tg-py60">13</td>
+          <td class="tg-py60">0</td>
+          <td class="tg-py60">1</td>
+          <td class="tg-py60">0</td>
+          <td class="tg-py60">4</td>
+        </tr>
+        <tr>
+          <td class="tg-py60">hydroOntology_native-swo</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-f79y">0</td>
+          <td class="tg-f79y">1</td>
+          <td class="tg-f79y">0</td>
+          <td class="tg-f79y">0</td>
+          <td class="tg-f79y">13</td>
+          <td class="tg-py60">2</td>
+          <td class="tg-py60">0</td>
+          <td class="tg-py60">0</td>
+          <td class="tg-py60">0</td>
+          <td class="tg-py60">5</td>
+        </tr>
+        <tr>
+          <td class="tg-py60">hydroOntology_translated-swo</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-py60">13</td>
+          <td class="tg-py60">1</td>
+          <td class="tg-py60">0</td>
+          <td class="tg-py60">3</td>
+          <td class="tg-py60">28</td>
+        </tr>
+        <tr>
+          <td class="tg-mfhl">gbo-gmo</td>
+          <td class="tg-mfhl">0</td>
+          <td class="tg-mfhl">0</td>
+          <td class="tg-mfhl">0</td>
+          <td class="tg-mfhl">0</td>
+          <td class="tg-mfhl">0</td>
+          <td class="tg-bolj">18</td>
+          <td class="tg-bolj">0</td>
+          <td class="tg-bolj">1</td>
+          <td class="tg-bolj">3</td>
+          <td class="tg-bolj">12</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-bolj">6</td>
+          <td class="tg-bolj">0</td>
+          <td class="tg-bolj">0</td>
+          <td class="tg-bolj">0</td>
+          <td class="tg-bolj">4</td>
+          <td class="tg-mfhl">17</td>
+          <td class="tg-mfhl">0</td>
+          <td class="tg-mfhl">0</td>
+          <td class="tg-mfhl">0</td>
+          <td class="tg-mfhl">14</td>
+        </tr>
+        <tr>
+          <td class="tg-mfhl">popgbo-popgmo</td>
+          <td class="tg-mfhl">0</td>
+          <td class="tg-mfhl">0</td>
+          <td class="tg-mfhl">0</td>
+          <td class="tg-mfhl">0</td>
+          <td class="tg-mfhl">0</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-mfhl">14</td>
+          <td class="tg-mfhl">14</td>
+          <td class="tg-mfhl">0</td>
+          <td class="tg-mfhl">2</td>
+          <td class="tg-mfhl">23</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-mfhl">11</td>
+          <td class="tg-mfhl">6</td>
+          <td class="tg-mfhl">44</td>
+          <td class="tg-mfhl">0</td>
+          <td class="tg-mfhl">126</td>
+        </tr>
+        <tr>
+          <td class="tg-py60">enslaved wikidata</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-py60">-</td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-f79y">-</td>
+          <td class="tg-py60">3</td>
+          <td class="tg-py60">9</td>
+          <td class="tg-py60">0</td>
+          <td class="tg-py60">0</td>
+          <td class="tg-py60">44</td>
+          <td class="tg-f79y">0</td>
+          <td class="tg-f79y">0</td>
+          <td class="tg-f79y">0</td>
+          <td class="tg-f79y">2</td>
+          <td class="tg-f79y">0</td>
+          <td class="tg-py60">11</td>
+          <td class="tg-py60">0</td>
+          <td class="tg-py60">0</td>
+          <td class="tg-py60">0</td>
+          <td class="tg-py60">112</td>
+        </tr>
+        <tr>
+          <td class="tg-mfhl">hp</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-mfhl">826</td>
+          <td class="tg-mfhl">156</td>
+          <td class="tg-mfhl">393</td>
+          <td class="tg-mfhl">2366</td>
+          <td class="tg-mfhl">2246</td>
+        </tr>
+        <tr>
+          <td class="tg-mfhl">mp</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-mfhl">2441</td>
+          <td class="tg-mfhl">689</td>
+          <td class="tg-mfhl">543</td>
+          <td class="tg-mfhl">3131</td>
+          <td class="tg-mfhl">3318</td>
+        </tr>
+        <tr>
+          <td class="tg-mfhl">wbp</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-mfhl">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-bolj">-</td>
+          <td class="tg-mfhl">56</td>
+          <td class="tg-mfhl">101</td>
+          <td class="tg-mfhl">14</td>
+          <td class="tg-mfhl">401</td>
+          <td class="tg-mfhl">390</td>
+        </tr>
+      </table>
+
+    <h2>Organizers</h2>
+
+    <ul>
+      <li>Cassia Trojahn (IRIT, Toulouse, France), cassia [.] trojahn [at] irit [.] fr</li>
+      <li>Ondřej Zamazal (Prague University of Economics and Business), ondrej [.] zamazal [at] vse [.] cz</li>
+      <li>Marta Silva (University of Lisbon), mcdsilva [at] fc [.] ul [.] pt</li>
+      <li>Guilheme Sousa (IRIT, Toulouse, France), Guilherme [.] Santos [-] Sousa [at] irit.fr</li>
+    </ul>
+
+    <h2>References</h2>
+
+  <p>[1] Ondřej Zamazal, Vojtěch Svátek. The Ten-Year OntoFarm and its Fertilization within the Onto-Sphere. Web Semantics: Science, Services and Agents on the World Wide Web, 43, 46-53. 2017.</p>
+
+<p>[2] Élodie Thiéblin, Ollivier Haemmerlé, Nathalie Hernandez, Cassia Trojahn. Task-Oriented Complex Ontology Alignment: Two Alignment Evaluation Sets. In : European Semantic Web Conference. Springer, Cham, 655-670, 2018.</p>
+
+<p>[3] Élodie Thiéblin, Fabien Amarger, Nathalie Hernandez, Catherine Roussey, Cassia Trojahn. Cross-querying LOD datasets using complex alignments: an application to agronomic taxa. In: Research Conference on Metadata and Semantics Research. Springer, Cham, 25-37, 2017.</p>
+
+<p>[4] Lu Zhou, Michelle Cheatham, Adila Krisnadhi, Pascal Hitzler. A Complex Alignment Benchamark: GeoLink Dataset. In: International Semantic Web Conference. Springer, Proceedings, Part II, pp. 273-288, 2018.</p>
+
+<p>[5] Marc Ehrig, and Jérôme Euzenat. "Relaxed precision and recall for ontology matching." K-CAP 2005 Workshop on Integrating Ontologies, Banff, Canada, 2005.</p>
+
+<p>[6] Élodie Thiéblin. Do competency questions for alignment help fostering complex correspondences?. In EKAW Doctoral Consortium, 2018.</p>
+
+<p>[7] Élodie Thiéblin, Fabien Amarger, Ollivier Haemmerlé, Nathalie Hernandez, Cassia Trojahn. Rewriting SELECT SPARQL queries from 1:n complex correspondences. In: Ontology Matching, pp. 49-60, 2016.</p>
+
+<p>[8] Silva, M. C., Faria, D., & Pesquita, C. (2024). Complex Multi-Ontology Alignment Through Geometric Operations on Language Embeddings. In ECAI 2024 (pp. 1333–1340). IOS Press. https://doi.org/10.3233/FAIA240632</p>
+
+<p>[9] Aric A. Hagberg, Daniel A. Schult and Pieter J. Swart, “Exploring network structure, dynamics, and function using NetworkX”, in Proceedings of the 7th Python in Science Conference (SciPy2008), Gäel Varoquaux, Travis Vaught, and Jarrod Millman (Eds), (Pasadena, CA USA), pp. 11–15, Aug 2008</p>
+
+<p>[10] Silva, M. C., Faria, D., & Pesquita, C. (2025). CMOMgen: Complex Multi-Ontology Alignment via Pattern-Guided In-Context Learning (No. arXiv:2510.21656). arXiv. https://doi.org/10.48550/arXiv.2510.21656</p>
+
+<p>[11] Gargano MA <i>et al.</i>, The Human Phenotype Ontology in 2024: phenotypes around the world. Nucleic Acids Res. 2024 Jan 5;52(D1):D1333-D1346. doi: 10.1093/nar/gkad1005. PMID: 37953324; PMCID: PMC10767975., https://doi.org/10.1093/nar/gkad1005</p>
+
+
+    <!-- <div class="address">
+      <div class="footer">
+        <a href="http://oaei.ontologymatching.org/2025/complex/index.html">http://oaei.ontologymatching.org/2025/complex</a>
+      </div>
+    </div> -->
+  
+
+</body>
+</html>
