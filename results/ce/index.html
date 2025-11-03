@@ -13,17 +13,33 @@ table { border:solid 1px }
 
 <!-- array containg all data -->
 var data = new Array(
-"Agent-OM","81","0.486","0.6","0.865",
-"LogMap","82 (0.5)","0.516","0.641","0.931",
-"LogMapLt","88","0.433","0.552","0.834",
-"Matcha","85 (0.9)","0.158","0.267","0.917",
+"Agent-OM","81","0.469","0.603","0.844",
+"LogMap","82","0.5","0.646","0.911",
+"LogMapLt","88","0.42","0.556","0.822",
+"Matcha","85 (0.9)","0.459","0.6","0.867",
 );
 
+/* === Added: second and third datasets (identical structure, different values) === */
+var data2 = new Array(
+"Agent-OM","36","0.639","0.708","0.793",
+"LogMap","37","0.676","0.758","0.862",
+"LogMapLt","40","0.575","0.667","0.793",
+"Matcha","38 (0.9)","0.632","0.716","0.828"
+);
 
+var data3 = new Array(
+"Agent-OM","45","0.333","0.492","0.938",
+"LogMap","45","0.356","0.525","1",
+"LogMapLt","48","0.292","0.438","0.875",
+"Matcha","47 (0.9)","0.319","0.476","0.938"
+);
 
 
 <!-- array in which the sorted data is located -->
 var sort_data = new Array(data.length);
+/* === Added: sort buffers for the extra datasets === */
+var sort_data2 = new Array(data2.length);
+var sort_data3 = new Array(data3.length);
 
 <!-- define the headings, headings[x][0] are the names of the upper headings and all others for subheadings -->
 <!-- below a certain upper heading -->
@@ -37,6 +53,9 @@ var headings = new Array();
 <!-- determine the number of columns -->
 var columns = headings.length;
 var rows = data.length/columns;
+/* === Added: row counts for the extra datasets === */
+var rows2 = data2.length/columns;
+var rows3 = data3.length/columns;
 
 <!-- different heading formats according to the number of subheadings -->
 var headingColumnsFormatting = new Array(
@@ -67,6 +86,9 @@ var ArrowUpSorted = "<img src=\"./ce_files/arrowUpSorted.jpg\" width=\"14\" heig
 var ArrowDownSorted = "<img src=\"./ce_files/arrowDownSorted.jpg\" width=\"14\" height=\"13\" border=\"0\" alt=\"\">";
 
 var sortedLine = "";
+/* === Added: header sort rows for extra tables === */
+var sortedLine2 = "";
+var sortedLine3 = "";
 
 <!-- function to sort a certain line in a certain direction. Number presents the lien number. -->
 function createSortedLine(number,direction) {
@@ -178,6 +200,166 @@ function writeTable(Array) {
   document.table.document.close();
  }
 }
+
+<!-- DUPLICATE SET (Table 2) -->
+function createSortedLine2(number,direction) {
+ sortedLine2 = "<tr>";
+ for(var j = 0; j < columns; ++j) {
+  sortedLine2 += "<th " + columnsFormatting[0] + ">";
+  if(direction == "ascending" && j == number) {
+   sortedLine2 += ArrowUpSorted + " ";
+   sortedLine2 += "<a href=\"javascript:sortColumns2(" + j + ",'" + columnSortTypes[j] + "','descending')\">" + ArrowDown + "</a>";
+  }
+  else if(direction == "descending" && j == number) {
+   sortedLine2 += "<a href=\"javascript:sortColumns2(" + j + ",'" + columnSortTypes[j] + "','ascending')\">" + ArrowUp + "</a>";
+   sortedLine2 += " " + ArrowDownSorted;
+  }
+  else {
+   sortedLine2 += "<a href=\"javascript:sortColumns2(" + j + ",'" + columnSortTypes[j] + "','ascending')\">" + ArrowUp + "</a> ";
+   sortedLine2 += "<a href=\"javascript:sortColumns2(" + j + ",'" + columnSortTypes[j] + "','descending')\">" + ArrowDown + "</a><\/td>";
+  }
+  sortedLine2 += "<\/th>";
+ }
+ sortedLine2 += "<tr>";
+}
+
+function sortColumns2(number,type,direction) {
+ var columnsData = new Array();
+ var dataToCompare = new Array();
+ var index = new Array();
+ for(var i = 0; i < rows2; ++i)
+  columnsData[i] = dataToCompare[i] = data2[i * columns + number];
+ if(type == "alphabetical") columnsData.sort();
+ if(type == "numerical") columnsData.sort(Numsort);
+ if(type == "numericalInverse") columnsData.sort(NumsortInverse);
+ if(type== "star") columnsData.sort(starSort);
+ if(direction == "descending") columnsData.reverse();
+ var alreadySet = false;
+ for(i = 0; i < rows2; ++i)
+  for(var j = 0; j < rows2; ++j)
+   if(columnsData[i] == dataToCompare[j]) {
+  for(var k=0; k<index.length; k++) {
+   if(index[k]==j) alreadySet=true;
+   }
+     if(alreadySet==false) index[i] = j;
+   else alreadySet=false;
+   }
+
+ for(i = 0; i < rows2; ++i)
+  for(j = 0; j < columns; ++j)
+   sort_data2[i * columns + j] = data2[index[i] * columns + j];
+ createSortedLine2(number,direction);
+ writeTable2(sort_data2);
+}
+
+function writeTable2(Array) {
+ var content = "";
+ content += "<table " + tableFormatting + ">";
+ content += "<thead><tr>";
+ for(var j = 0; j < headings.length; ++j)
+  content += "<th " + headingColumnsFormatting[0] + "bgcolor=\"CCCCCC\">" + headings[j] + "<\/th>";
+  content += "<\/tr>";
+ content += sortedLine2;
+ content += "<\/thead>";
+ content += "<tfoot><\/tfoot>";
+ content += "<tbody>";
+ for(var i = 0; i < rows2; ++i) {
+    if(i%2 == 0) content += "<tr bgcolor=\"FFFFDD\">"; else content += "<tr bgcolor=\"FFDDFF\">";
+  for(var j = 0; j < columns; ++j)
+   content += "<td " + columnsFormatting[0] + ">" + Array[i * columns + j] + "<\/td>";
+  content += "<\/tr>";
+ }
+ content += "<\/tbody>";
+ content += "<\/table>";
+ if(document.getElementById) document.getElementById("table2").innerHTML = content;
+ else if(document.all) document.all.table2.innerHTML = content;
+ else if(document.layers) {
+  document.table2.document.open();
+  document.table2.document.write(content);
+  document.table2.document.close();
+ }
+}
+
+<!-- DUPLICATE SET (Table 3) -->
+function createSortedLine3(number,direction) {
+ sortedLine3 = "<tr>";
+ for(var j = 0; j < columns; ++j) {
+  sortedLine3 += "<th " + columnsFormatting[0] + ">";
+  if(direction == "ascending" && j == number) {
+   sortedLine3 += ArrowUpSorted + " ";
+   sortedLine3 += "<a href=\"javascript:sortColumns3(" + j + ",'" + columnSortTypes[j] + "','descending')\">" + ArrowDown + "</a>";
+  }
+  else if(direction == "descending" && j == number) {
+   sortedLine3 += "<a href=\"javascript:sortColumns3(" + j + ",'" + columnSortTypes[j] + "','ascending')\">" + ArrowUp + "</a>";
+   sortedLine3 += " " + ArrowDownSorted;
+  }
+  else {
+   sortedLine3 += "<a href=\"javascript:sortColumns3(" + j + ",'" + columnSortTypes[j] + "','ascending')\">" + ArrowUp + "</a> ";
+   sortedLine3 += "<a href=\"javascript:sortColumns3(" + j + ",'" + columnSortTypes[j] + "','descending')\">" + ArrowDown + "</a><\/td>";
+  }
+  sortedLine3 += "<\/th>";
+ }
+ sortedLine3 += "<tr>";
+}
+
+function sortColumns3(number,type,direction) {
+ var columnsData = new Array();
+ var dataToCompare = new Array();
+ var index = new Array();
+ for(var i = 0; i < rows3; ++i)
+  columnsData[i] = dataToCompare[i] = data3[i * columns + number];
+ if(type == "alphabetical") columnsData.sort();
+ if(type == "numerical") columnsData.sort(Numsort);
+ if(type == "numericalInverse") columnsData.sort(NumsortInverse);
+ if(type== "star") columnsData.sort(starSort);
+ if(direction == "descending") columnsData.reverse();
+ var alreadySet = false;
+ for(i = 0; i < rows3; ++i)
+  for(var j = 0; j < rows3; ++j)
+   if(columnsData[i] == dataToCompare[j]) {
+  for(var k=0; k<index.length; k++) {
+   if(index[k]==j) alreadySet=true;
+   }
+     if(alreadySet==false) index[i] = j;
+   else alreadySet=false;
+   }
+
+ for(i = 0; i < rows3; ++i)
+  for(j = 0; j < columns; ++j)
+   sort_data3[i * columns + j] = data3[index[i] * columns + j];
+ createSortedLine3(number,direction);
+ writeTable3(sort_data3);
+}
+
+function writeTable3(Array) {
+ var content = "";
+ content += "<table " + tableFormatting + ">";
+ content += "<thead><tr>";
+ for(var j = 0; j < headings.length; ++j)
+  content += "<th " + headingColumnsFormatting[0] + "bgcolor=\"CCCCCC\">" + headings[j] + "<\/th>";
+  content += "<\/tr>";
+ content += sortedLine3;
+ content += "<\/thead>";
+ content += "<tfoot><\/tfoot>";
+ content += "<tbody>";
+ for(var i = 0; i < rows3; ++i) {
+    if(i%2 == 0) content += "<tr bgcolor=\"FFFFDD\">"; else content += "<tr bgcolor=\"FFDDFF\">";
+  for(var j = 0; j < columns; ++j)
+   content += "<td " + columnsFormatting[0] + ">" + Array[i * columns + j] + "<\/td>";
+  content += "<\/tr>";
+ }
+ content += "<\/tbody>";
+ content += "<\/table>";
+ if(document.getElementById) document.getElementById("table3").innerHTML = content;
+ else if(document.all) document.all.table3.innerHTML = content;
+ else if(document.layers) {
+  document.table3.document.open();
+  document.table3.document.write(content);
+  document.table3.document.close();
+ }
+}
+
+
 <!-- sorting for numerical values-->
 function Numsort(a,b){
     if(a=="-") {
@@ -230,7 +412,10 @@ function NumsortInverse(a,b){
 }
 </script>
 </head>
-<body onload="createSortedLine(-1,&#39;&#39;); writeTable(data);">
+<!-- <body onload="createSortedLine(-1,&#39;&#39;); writeTable(data);"> -->
+<body onload="createSortedLine(-1,''); writeTable(data);
+              createSortedLine2(-1,''); writeTable2(data2);
+              createSortedLine3(-1,''); writeTable3(data3);">
 
 <div class="header">
 <a style="color: grey; line-height: 5mm;" href="https://oaei.ontologymatching.org/2025/results/">Ontology
@@ -267,7 +452,7 @@ We used the MELT platform to execute our evaluations for the executed systems. C
 
 <h2>Results</h2>
 <p>
-    This year, we had four participants: Agent-OM, LogMap, LogMapLt, and Matcha. With regard to F1-Measure, LogMap achieved the highest score.
+    This year, we had four participants: Agent-OM, LogMap, LogMapLt, and Matcha. With regard to F1-Measure, LogMap achieved the highest score. The overall results of the participants are in the following table:
 </p>
 
 <center>
@@ -330,46 +515,156 @@ We used the MELT platform to execute our evaluations for the executed systems. C
       </thead>
 
       <tfoot></tfoot>
-
-      <!--<tbody>
-        <tr bgcolor="FFFFDD">
-          <td width="75" style="font-family:Courier New,courier; text-align:center; border:solid 1px #808080">Agent-OM</td>
-          <td width="75" style="font-family:Courier New,courier; text-align:center; border:solid 1px #808080">?</td>
-          <td width="75" style="font-family:Courier New,courier; text-align:center; border:solid 1px #808080">0.486</td>
-          <td width="75" style="font-family:Courier New,courier; text-align:center; border:solid 1px #808080">0.6</td>
-          <td width="75" style="font-family:Courier New,courier; text-align:center; border:solid 1px #808080">0.865</td>
-        </tr>
-        <tr bgcolor="FFDDFF">
-          <td width="75" style="font-family:Courier New,courier; text-align:center; border:solid 1px #808080">LogMap (0.?)</td>
-          <td width="75" style="font-family:Courier New,courier; text-align:center; border:solid 1px #808080">?</td>
-          <td width="75" style="font-family:Courier New,courier; text-align:center; border:solid 1px #808080">0.516</td>
-          <td width="75" style="font-family:Courier New,courier; text-align:center; border:solid 1px #808080">0.641</td>
-          <td width="75" style="font-family:Courier New,courier; text-align:center; border:solid 1px #808080">0.931</td>
-        </tr>
-        <tr bgcolor="FFFFDD">
-          <td width="75" style="font-family:Courier New,courier; text-align:center; border:solid 1px #808080">LogMapLt</td>
-          <td width="75" style="font-family:Courier New,courier; text-align:center; border:solid 1px #808080">?</td>
-          <td width="75" style="font-family:Courier New,courier; text-align:center; border:solid 1px #808080">0.433</td>
-          <td width="75" style="font-family:Courier New,courier; text-align:center; border:solid 1px #808080">0.552</td>
-          <td width="75" style="font-family:Courier New,courier; text-align:center; border:solid 1px #808080">0.834</td>
-        </tr>
-        <tr bgcolor="FFFFDD">
-          <td width="75" style="font-family:Courier New,courier; text-align:center; border:solid 1px #808080">Matcha (0.?)</td>
-          <td width="75" style="font-family:Courier New,courier; text-align:center; border:solid 1px #808080">?</td>
-          <td width="75" style="font-family:Courier New,courier; text-align:center; border:solid 1px #808080">0.158</td>
-          <td width="75" style="font-family:Courier New,courier; text-align:center; border:solid 1px #808080">0.267</td>
-          <td width="75" style="font-family:Courier New,courier; text-align:center; border:solid 1px #808080">0.917</td>
-        </tr>
-      </tbody>-->
     </table>
   </div>
 </center>
     <p>
-        The table also shows the results for precision, F-measure, recall and the size of the alignments for the optimal threshold.
+        The table also shows the results for precision, F-measure, recall, and the size of the alignments (size of the alignments for the optimal threshold). The measures are micro-averaged values, computed directly from the total TP, FP, and FN across both alignments.
         <!--Regarding the recall, Matcha achieved the best score. LogMap and Matcha provide the correspondences with real-valued confidence. Therefore, we applied thresholding during evaluation.-->
     </p>
 
+    <p>
+      The following two tables show results for individual matching pairs.
+    </p>
+    <p>
+      CEON - BiOnto:
+    </p>
 
+<center>
+  <noscript>
+    <p>Java-Script need to be enabled!</p>
+  </noscript>
+
+  <div id="table2">
+    <table border="1" style="border:solid 1px #808080" cellspacing="0">
+      <thead>
+        <tr>
+          <th colspan="1" valign="top" style="text-align:center; border:solid 1px #808080" bgcolor="CCCCCC">Matcher</th>
+          <th colspan="1" valign="top" style="text-align:center; border:solid 1px #808080" bgcolor="CCCCCC">Size</th>
+          <th colspan="1" valign="top" style="text-align:center; border:solid 1px #808080" bgcolor="CCCCCC">Precision</th>
+          <th colspan="1" valign="top" style="text-align:center; border:solid 1px #808080" bgcolor="CCCCCC">F-Measure</th>
+          <th colspan="1" valign="top" style="text-align:center; border:solid 1px #808080" bgcolor="CCCCCC">Recall</th>
+        </tr>
+        <tr>
+          <th width="75" style="font-family:Courier New,courier; text-align:center; border:solid 1px #808080">
+            <a href="javascript:sortColumns(0,'alphabetical','ascending')">
+              <img src="./ce_files/arrowUp.jpg" width="14" height="13" border="0" alt="">
+            </a>
+            <a href="javascript:sortColumns(0,'alphabetical','descending')">
+              <img src="./ce_files/arrowDown.jpg" width="14" height="13" border="0" alt="">
+            </a>
+          </th>
+          <th width="75" style="font-family:Courier New,courier; text-align:center; border:solid 1px #808080">
+            <a href="javascript:sortColumns(1,'star','ascending')">
+              <img src="./ce_files/arrowUp.jpg" width="14" height="13" border="0" alt="">
+            </a>
+            <a href="javascript:sortColumns(1,'star','descending')">
+              <img src="./ce_files/arrowDown.jpg" width="14" height="13" border="0" alt="">
+            </a>
+          </th>
+          <th width="75" style="font-family:Courier New,courier; text-align:center; border:solid 1px #808080">
+            <a href="javascript:sortColumns(2,'numerical','ascending')">
+              <img src="./ce_files/arrowUp.jpg" width="14" height="13" border="0" alt="">
+            </a>
+            <a href="javascript:sortColumns(2,'numerical','descending')">
+              <img src="./ce_files/arrowDown.jpg" width="14" height="13" border="0" alt="">
+            </a>
+          </th>
+          <th width="75" style="font-family:Courier New,courier; text-align:center; border:solid 1px #808080">
+            <a href="javascript:sortColumns(3,'numerical','ascending')">
+              <img src="./ce_files/arrowUp.jpg" width="14" height="13" border="0" alt="">
+            </a>
+            <a href="javascript:sortColumns(3,'numerical','descending')">
+              <img src="./ce_files/arrowDown.jpg" width="14" height="13" border="0" alt="">
+            </a>
+          </th>
+          <th width="75" style="font-family:Courier New,courier; text-align:center; border:solid 1px #808080">
+            <a href="javascript:sortColumns(4,'numerical','ascending')">
+              <img src="./ce_files/arrowUp.jpg" width="14" height="13" border="0" alt="">
+            </a>
+            <a href="javascript:sortColumns(4,'numerical','descending')">
+              <img src="./ce_files/arrowDown.jpg" width="14" height="13" border="0" alt="">
+            </a>
+          </th>
+        </tr>
+      </thead>
+
+      <tfoot></tfoot>
+    </table>
+  </div>
+</center>
+
+    <p>
+      CEON - MATONTO:
+    </p>
+
+<center>
+  <noscript>
+    <p>Java-Script need to be enabled!</p>
+  </noscript>
+
+  <div id="table3">
+    <table border="1" style="border:solid 1px #808080" cellspacing="0">
+      <thead>
+        <tr>
+          <th colspan="1" valign="top" style="text-align:center; border:solid 1px #808080" bgcolor="CCCCCC">Matcher</th>
+          <th colspan="1" valign="top" style="text-align:center; border:solid 1px #808080" bgcolor="CCCCCC">Size</th>
+          <th colspan="1" valign="top" style="text-align:center; border:solid 1px #808080" bgcolor="CCCCCC">Precision</th>
+          <th colspan="1" valign="top" style="text-align:center; border:solid 1px #808080" bgcolor="CCCCCC">F-Measure</th>
+          <th colspan="1" valign="top" style="text-align:center; border:solid 1px #808080" bgcolor="CCCCCC">Recall</th>
+        </tr>
+        <tr>
+          <th width="75" style="font-family:Courier New,courier; text-align:center; border:solid 1px #808080">
+            <a href="javascript:sortColumns(0,'alphabetical','ascending')">
+              <img src="./ce_files/arrowUp.jpg" width="14" height="13" border="0" alt="">
+            </a>
+            <a href="javascript:sortColumns(0,'alphabetical','descending')">
+              <img src="./ce_files/arrowDown.jpg" width="14" height="13" border="0" alt="">
+            </a>
+          </th>
+          <th width="75" style="font-family:Courier New,courier; text-align:center; border:solid 1px #808080">
+            <a href="javascript:sortColumns(1,'star','ascending')">
+              <img src="./ce_files/arrowUp.jpg" width="14" height="13" border="0" alt="">
+            </a>
+            <a href="javascript:sortColumns(1,'star','descending')">
+              <img src="./ce_files/arrowDown.jpg" width="14" height="13" border="0" alt="">
+            </a>
+          </th>
+          <th width="75" style="font-family:Courier New,courier; text-align:center; border:solid 1px #808080">
+            <a href="javascript:sortColumns(2,'numerical','ascending')">
+              <img src="./ce_files/arrowUp.jpg" width="14" height="13" border="0" alt="">
+            </a>
+            <a href="javascript:sortColumns(2,'numerical','descending')">
+              <img src="./ce_files/arrowDown.jpg" width="14" height="13" border="0" alt="">
+            </a>
+          </th>
+          <th width="75" style="font-family:Courier New,courier; text-align:center; border:solid 1px #808080">
+            <a href="javascript:sortColumns(3,'numerical','ascending')">
+              <img src="./ce_files/arrowUp.jpg" width="14" height="13" border="0" alt="">
+            </a>
+            <a href="javascript:sortColumns(3,'numerical','descending')">
+              <img src="./ce_files/arrowDown.jpg" width="14" height="13" border="0" alt="">
+            </a>
+          </th>
+          <th width="75" style="font-family:Courier New,courier; text-align:center; border:solid 1px #808080">
+            <a href="javascript:sortColumns(4,'numerical','ascending')">
+              <img src="./ce_files/arrowUp.jpg" width="14" height="13" border="0" alt="">
+            </a>
+            <a href="javascript:sortColumns(4,'numerical','descending')">
+              <img src="./ce_files/arrowDown.jpg" width="14" height="13" border="0" alt="">
+            </a>
+          </th>
+        </tr>
+      </thead>
+
+      <tfoot></tfoot>
+    </table>
+  </div>
+</center>
+
+<p>
+  Last year, the CE track included only one ontology pair for matching, CEON and BiOnto. Comparing the results from last year, all three common participants (LogMap, LogMapLt, Matcha) significantly improved their performance this year (Matcha after thresholding). Based on the false positives analysis, just as last year, it turns out that mere string matching could be misleading, and the meaning of entities should be better considered. This approach could be an opportunity for future performance approvements.
+</p>
 <!--<h2>Conclusions</h2>
 <p>
 </p>-->
@@ -381,10 +676,10 @@ We used the MELT platform to execute our evaluations for the executed systems. C
 </p>
 
 <p>
-    The weights in LogMap's alignment range from 1.12 (?) to 0.5. There were multiple matches with the lowest weight (0.5). These mappings were a mix of correct mappings (majority) and false positives. The computed threshold for obtaining the highest F-measure is 0.5 (including) which corresponds to the mappings analysis. Therefore, LogMap achieves the highest F-measure while taking all the mappings into consideration, without threshold adjustments.
+    The weights in LogMap's alignment range from 1 to 0.5. There were multiple matches with the lowest weight (0.5). These mappings were a mix of correct mappings (majority) and false positives. The computed threshold for obtaining the highest F-measure is 0.5 (including) which corresponds to the mappings analysis. Therefore, LogMap achieves the highest F-measure while taking all the mappings into consideration, without threshold adjustments.
 </p>
 <p>
-    In case of MATCHA, the weights of its results range between 1 and 0.6. Surprisingly, all mappings with the highest weights were false positives. The correct mapping with the lowest weight was weighted to 0.9306. This is also the computed threshold for obtaining the highest F-measure which is 0.61. Threshold 0.9306 (including) is very specific. Using a more general threshold 0.9 (including), the F-measure is just a slightly lower 0.6. Applying the thresholds, the number of correct mappings stays the same while the number of false positives lowers from 222 to 44 for threshold 0.9306 or 46 for threshold 0.9.
+    In case of MATCHA, the weights of its results range between 1 and 0.6. Surprisingly, all mappings with the highest weights were false positives. The correct mapping with the lowest weight was weighted to 0.9306. This is also the computed threshold for obtaining the highest F-measure which is 0.61. Threshold 0.9306 (including) is very specific. Using a more general threshold 0.9 (including), the F-measure is just a slightly lower 0.6. Applying the thresholds, the number of correct mappings stays the same while the number of false positives lowers from 222 to 44 for threshold 0.9306 or 46 for threshold 0.9. Applying the threshold 0.9, precision improves from 0.149 to 0.459, F-measure from 0.255 to 0.6, while recall remains 0.867.
 </p>
 
 
@@ -403,7 +698,7 @@ We used the MELT platform to execute our evaluations for the executed systems. C
     <li>? - no obvious reason could be seen.</li>
 </ul>
 <p>
-    Looking at the results, it can be said that when the reason an alignment was discovered was the same name, all or at least most tools generated the mapping. LogMap and MATCHA further generated mappings based on similar strings. Agent-OM and MATCHA generated mappings based on synonyms. All four systems generated mappings where the same word was present in the entities names. Below are some comments for individual tools and the reasons why they discovered the false positives:
+    Looking at the results, it can be said that when the reason an alignment was discovered was the same name, all or at least most tools generated the mapping. LogMap and MATCHA further generated some FPs based on similar strings. Agent-OM and MATCHA generated some FPs based on synonyms. All four systems generated FPs where the same word was present in the entities names. Below are some comments for individual tools and the reasons why they discovered the false positives:
 </p>
 <ul>
     <li>Agent-OM (43 FPs) - same name (39x), synonym (2x), contains same word (2x),</li>
