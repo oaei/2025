@@ -1,0 +1,60 @@
+
+<html><head><title>Ontology Alignment Evaluation Initiative::Pharmacogenomics Track | Evaluation</title>
+
+<meta http-equiv="Content-type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="../../style.css" />
+
+<div class="header">
+<a style="color: grey; line-height: 5mm;" href="../index.html">
+Ontology Alignment Evaluation Initiative - OAEI-2025 Campaign</a>
+<a href="http://oaei.ontologymatching.org/"><img src="http://oaei.ontologymatching.org/oaeismall.jpg" alt="OAEI" style="border-style: none; float: right; margin-left: 5pt;"></a>
+  
+</div>
+
+<h1>Results for OAEI 2025 - Pharmacogenomics Track</h1>
+
+<h2>Matching systems</h2>
+
+We evaluated the following systems that registered for the track:
+
+<ul>
+<li>logmap-bio-melt</li>
+<li>logmap-kg-melt</li>
+<li>logmap-lite-melt</li>
+<li>logmap-melt</li>
+<li>lsmatch</li>
+<li>lsmatch-multilingual</li>
+<li>matcha</li>
+<li>tim</li>
+</ul>
+
+<h2>Alignment results</h2>
+
+
+<p>LSMatch, LSMatch+Multilingual, and TIM failed to produce alignments due to runtime errors.</p>
+
+<p>Regarding LogMap, similarly to last year, its different versions did not produce alignments between $n$-ary tuples; however, some versions produced alignments between other entities (e.g., components of pharmacogenomic tuples such as drugs or genetic factors). 
+These alignments were valid, sometimes trivial, but are out of the scope of the Pharmacogenomics track. 
+We link the inability of LogMap to produce alignments between $n$-ary tuples to the absence of labels for such tuples, as providing labels allows all LogMap versions to produce alignments. 
+However, when labels are present, altering neighborhoods does not impact the produced alignments, showing that only labels are taken into account by the different versions of the LogMap system. 
+Recall that $n$-ary tuples are reifed as abstract entities because RDF does not allow $n$-ary relations. Hence, labels of such reified entities are seldom present in general, but their neighbors play a crucial role in their identity. 
+These observations lead us to conclude that LogMap is not adequate for the task of matching pharmacogenomic knowledge, as it appears to rely only on labels and disregard neighbors.</p>
+
+<p>Matcha failed to produce alignments on the three proposed tasks due to out-of-memory errors. 
+However, when tested on sample tasks involving only two tuples to match, Matcha was able to produce alignments between these $n$-ary tuples, even in the absence of labels. 
+We also noticed that altering the neighborhood of tuples may have varying impacts on the produced alignments. 
+For instance, removing one of the two symmetric edges linking one tuple to its components leads to the absence of output alignments, whereas removing the two edges for one tuple still allows alignments to be detected. 
+As a result, we believe Matcha could be an interesting candidate for pharmacogenomic knowledge alignment, even if it may not be able to tackle the huge number of tuples to align, and the diversity of their neighborhoods.</p>
+
+
+<h2>Organizers</h2>
+<ul>
+<li><a href="https://pmonnin.github.io">Pierre Monnin</a> (Université Côte d’Azur, Inria, CNRS, I3S, France), main contact for the track, pierre dot monnin at inria dot fr</li>
+<li><a href="https://team.inria.fr/heka/fr/team-members/coulet/">Adrien Coulet</a> (Inria Paris, Centre de Recherche des Cordeliers, Inserm, Université Paris Cité, Sorbonne Université, Paris, France)</li>
+</ul>
+
+<div class="address">
+<div class="footer"><a href="index.html">Pharmacogenomics Track | Evaluation</a></div>
+<!--$Id$-->
+</div>
+</body></html>
